@@ -7,13 +7,28 @@ window.addEventListener('load', () => {
     const page4 = document.querySelector('.page4');
     const page5 = document.querySelector('.page5');
     
+    // Ensure page1 is visible
     if (page1) {
         page1.classList.remove('hidden');
         page1.style.visibility = 'visible';
         page1.style.opacity = '1';
         page1.style.transform = 'translateY(0)';
+        
+        // Reset animations for page 1 elements
+        const page1Text = page1.querySelector('.maintext');
+        if (page1Text) {
+            page1Text.style.animation = 'none';
+            page1Text.offsetHeight; // Trigger reflow
+            page1Text.style.animation = 'fadeInUp 1.2s ease forwards';
+        }
+        
+        const page1Arrow = page1.querySelector('.down-arrow');
+        if (page1Arrow) {
+            page1Arrow.style.animation = 'fadeIn 1s ease forwards 2s, bounce 2s infinite 3s';
+        }
     }
     
+    // Hide other pages
     if (page2) page2.classList.add('hidden');
     if (header) header.classList.add('hidden');
     if (hero) hero.classList.add('hidden');
@@ -22,7 +37,6 @@ window.addEventListener('load', () => {
     
     document.body.classList.add('initial-pages');
     document.body.style.overflow = 'hidden';
-    
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -212,20 +226,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function initScrollAnimations() {
+        const isMobile = window.innerWidth <= 768;
+        const threshold = isMobile ? 0.05 : 0.15; // Lower threshold on mobile
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                     
-                    // If it's a solution card, apply staggered animation
+                    // If it's a solution card, apply appropriate animation
                     if (entry.target.classList.contains('solution-card')) {
-                        entry.target.style.transform = 'scale(1)';
+                        if (isMobile) {
+                            // Simpler animation on mobile
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        } else {
+                            entry.target.style.transform = 'scale(1)';
+                        }
                     }
                 }
             });
         }, {
-            threshold: 0.15, // Element appears when 15% visible
-            rootMargin: '0px 0px -50px 0px' // Slightly above the bottom edge
+            threshold: threshold,
+            rootMargin: isMobile ? '0px' : '0px 0px -50px 0px'
         });
         
         // Observe page4 (solutions)
@@ -351,4 +374,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         });
     });
+
+    // Function to handle resize events
+    function handleResize() {
+        const isMobile = window.innerWidth <= 768;
+        const solutions = document.querySelector('#solutions');
+        const whyUs = document.querySelector('#why-us');
+        
+        if (isMobile) {
+            // Force visibility on mobile
+            if (solutions) {
+                solutions.classList.remove('hidden');
+                solutions.style.opacity = '1';
+                solutions.style.transform = 'translateY(0)';
+                solutions.style.visibility = 'visible';
+            }
+            
+            if (whyUs) {
+                whyUs.classList.remove('hidden');
+                whyUs.style.opacity = '1';
+                whyUs.style.transform = 'translateY(0)';
+                whyUs.style.visibility = 'visible';
+            }
+            
+            // Make all cards visible on mobile
+            document.querySelectorAll('.solution-card, .card').forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.visibility = 'visible';
+            });
+        }
+    }
+
+    // Call on load and add resize event listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
 });
