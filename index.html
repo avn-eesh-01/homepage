@@ -1,0 +1,207 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  </style>
+</head>
+
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor"></div>
+
+  <!-- Page 1 - Initial view -->
+  <div class="page1">
+    <div class="description">
+      <p class="maintext">
+        We are not <br />the usual <span class="outlined">agency</span>
+      </p>
+    </div>
+
+    <div class="down-arrow" id="first-arrow">
+      <img width="50" height="50" src="media\double down.svg" alt="double-down--v1" />
+    </div>
+  </div>
+
+  <!-- Page 2 - Hidden initially, shown after first arrow click -->
+  <div class="page2 hidden">
+    <div class="description">
+      <p class="maintext">
+        We are not a <br /><span class="outlined2">Branding</span> agency
+      </p>
+    </div>
+
+    <div class="down-arrow" id="second-arrow">
+      <img width="50" height="50" src="media\double down.svg" alt="double-down--v1" />
+    </div>
+  </div>
+
+  <!-- Page 3 components - Hidden initially, shown after second arrow click -->
+  <header class="hidden">
+    <nav>
+      <div class="logo">
+        <img src="media/upsight-logo.png" alt="Upsight Logo" />
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#solutions">Solutions</a>
+        <a href="#why-us">Why US</a>
+        <a href="#our-work">Our work</a>
+        <a href="#our-team">Our Team</a>
+        <a href="#contact" class="get-in-touch-mobile">About Us</a>
+      </div>
+      <div class="nav-buttons">
+        <button class="get-in-touch-btn">Get in touch</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero section (Part of page 3) -->
+  <main class="hero hidden">
+    <div class="badge">BRANDING LEADS GROWTH</div>
+    <h1>
+      <span class="who">We are</span>
+      <span class="brand">Upsight</span>
+    </h1>
+    <p class="tagline">Crafted for Brands that <span>LEAD</span></p>
+    <button class="get-in-touch-btn">Get in touch</button>
+  </main>
+
+  <!-- Page 4 - Solutions (Moved outside of hero section) -->
+  <section id="solutions" class="page4 hidden animate-on-scroll">
+    <div class="container">
+      <div class="section-header">
+        <h2><span class="outlined">Solutions</span></h2>
+        <p class="section-subheading">
+          Tailored Strategies to elevate your brand
+        </p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="solution-card animate-on-scroll">
+          <div class="solution-icon">
+            <img src="media/brand strategy.webp" alt="Brand Strategy Icon" />
+          </div>
+          <h3>Brand Strategy</h3>
+          <p>
+            We develop comprehensive brand strategies that position your
+            business for success.
+          </p>
+        </div>
+
+        <div class="solution-card animate-on-scroll">
+          <div class="solution-icon">
+            <img src="media/digital marketing.jpg" alt="Digital Marketing Icon" />
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>
+            Our data-driven marketing approach ensures your brand reaches the
+            right audience.
+          </p>
+        </div>
+
+        <div class="solution-card animate-on-scroll">
+          <div class="solution-icon">
+            <img src="media/web development.jpg" alt="Web Design Icon" />
+          </div>
+          <h3>Web Development</h3>
+          <p>
+            We create beautiful, functional websites that drive conversions
+            and elevate your online presence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Replace your Why Us section with this fixed version -->
+  <section id="why-us" class="page5 hidden animate-on-scroll">
+    <div class="container">
+      <div class="section-header">
+        <h2><span class="outlined">Why Us</span></h2>
+        <p class="section-subheading">
+          We are a partner in your success.
+        </p>
+      </div>
+      
+      <div class="why-us">
+        <div class="row">
+          <!-- Top row with 3 cards -->
+          <div class="card premium animate-on-scroll">
+            <div class="card-content">
+              <h2>Assure Premium Designs</h2>
+            </div>
+          </div>
+
+          <div class="card innovation animate-on-scroll">
+            <div class="card-content">
+              <h2>Innovation<span style="position: relative; display: inline-block;">
+                  <span style="position: absolute; top: -12px; right: -15px; font-size: 1.2rem; transform: rotate(30deg);">//</span>
+                </span></h2>
+            </div>
+          </div>
+
+          <div class="card user-centric animate-on-scroll">
+            <div class="card-content">
+              <h2>User-centric<br>Designs</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Bottom section with columns -->
+          <div class="left-column">
+            <div class="card impactful animate-on-scroll">
+              <div class="card-content">
+                <h2>Impactful Branding</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="middle-column">
+            <div class="middle-inner">
+              <div class="card upsight animate-on-scroll">
+                <div class="card-content">
+                  <div class="upsight-logo">
+                    <img src="media/upsight-logo.png" alt="upsight-logo">
+                    <span class="typo">Upsight</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card growth animate-on-scroll">
+                <div class="card-content">
+                  <h2>Growth Focused</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="right-inner">
+              <div class="card creative animate-on-scroll">
+                <div class="card-content">
+                  <h2>Creative Approach</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
