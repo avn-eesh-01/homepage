@@ -13,6 +13,9 @@ window.addEventListener('load', () => {
         page1.style.visibility = 'visible';
         page1.style.opacity = '1';
         page1.style.transform = 'translateY(0)';
+        page1.style.zIndex = '9000'; // Very high z-index
+        page1.style.position = 'fixed';
+        page1.style.backgroundColor = 'var(--dark-bg)';
         
         // Reset animations for page 1 elements
         const page1Text = page1.querySelector('.maintext');
@@ -29,12 +32,34 @@ window.addEventListener('load', () => {
     }
     
     // Hide other pages
-    if (page2) page2.classList.add('hidden');
-    if (header) header.classList.add('hidden');
-    if (hero) hero.classList.add('hidden');
-    if (page4) page4.classList.add('hidden');
-    if (page5) page5.classList.add('hidden');
+    if (page2) {
+        page2.classList.add('hidden');
+        page2.style.position = 'fixed';
+        page2.style.zIndex = '9000';
+    }
     
+    // Completely hide header, hero and content sections
+    if (header) {
+        header.classList.add('hidden');
+        header.style.display = 'none'; // Force display none
+    }
+    
+    if (hero) {
+        hero.classList.add('hidden');
+        hero.style.display = 'none'; // Force display none
+    }
+    
+    if (page4) {
+        page4.classList.add('hidden');
+        page4.style.display = 'none'; // Force display none
+    }
+    
+    if (page5) {
+        page5.classList.add('hidden');
+        page5.style.display = 'none'; // Force display none
+    }
+    
+    // Set body class to prevent scrolling
     document.body.classList.add('initial-pages');
     document.body.style.overflow = 'hidden';
 });
@@ -141,26 +166,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstArrow = document.getElementById('first-arrow');
     if (firstArrow) {
         firstArrow.addEventListener('click', () => {
-            // Hide page 1 with longer transition
-            page1.classList.add('hidden');
+            const page1 = document.querySelector('.page1');
+            const page2 = document.querySelector('.page2');
             
-            // Show page 2 after a longer delay
+            // Hide page 1 with extra mobile-specific styles
+            if (page1) {
+                page1.classList.add('hidden');
+                page1.style.zIndex = '-1';
+                
+                // Complete hiding after animation
+                setTimeout(() => {
+                    page1.style.display = 'none';
+                }, 1000);
+            }
+            
+            // Show page 2 after a delay
             setTimeout(() => {
-                page2.classList.remove('hidden');
-                
-                // Reset animations for page 2 elements
-                const page2Text = page2.querySelector('.maintext');
-                if (page2Text) {
-                    page2Text.style.animation = 'none';
-                    page2Text.offsetHeight; // Trigger reflow
-                    page2Text.style.animation = 'fadeInUp 1.5s ease forwards';
+                if (page2) {
+                    page2.style.display = 'flex';
+                    page2.style.zIndex = '9000';
+                    page2.style.visibility = 'visible';
+                    page2.style.backgroundColor = 'var(--dark-bg)';
+                    page2.classList.remove('hidden');
+                    
+                    // Reset animations for page 2 elements
+                    const page2Text = page2.querySelector('.maintext');
+                    if (page2Text) {
+                        page2Text.style.animation = 'none';
+                        void page2Text.offsetHeight; // Trigger reflow
+                        page2Text.style.animation = 'fadeInUp 1.5s ease forwards';
+                    }
+                    
+                    const page2Arrow = page2.querySelector('.down-arrow');
+                    if (page2Arrow) {
+                        page2Arrow.style.animation = 'none';
+                        void page2Arrow.offsetHeight; // Trigger reflow
+                        page2Arrow.style.animation = 'fadeIn 1.2s ease forwards 2.2s, bounce 2s infinite 3.5s';
+                    }
                 }
-                
-                const page2Arrow = page2.querySelector('.down-arrow');
-                if (page2Arrow) {
-                    page2Arrow.style.animation = 'fadeIn 1.2s ease forwards 2.2s, bounce 2s infinite 3.5s';
-                }
-            }, 1200);
+            }, 800);
         });
     }
     
@@ -168,31 +212,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const secondArrow = document.getElementById('second-arrow');
     if (secondArrow) {
         secondArrow.addEventListener('click', () => {
-            page2.classList.add('hidden');
+            const page2 = document.querySelector('.page2');
+            const header = document.querySelector('header');
+            const hero = document.querySelector('.hero');
+            const page4 = document.querySelector('.page4');
+            const page5 = document.querySelector('.page5');
             
+            // Hide page 2 with extra mobile-specific styles
+            if (page2) {
+                page2.classList.add('hidden');
+                page2.style.display = 'none';
+                page2.style.zIndex = '-1';
+            }
+            
+            // Small delay to ensure smooth transition
             setTimeout(() => {
+                // Remove the initial-pages class to enable scrolling
                 document.body.classList.remove('initial-pages');
                 document.body.style.overflow = 'visible';
+                document.body.style.position = 'static'; // Reset position
                 
                 // Show header and hero
-                if (header) header.classList.remove('hidden');
-                if (hero) hero.classList.remove('hidden');
+                if (header) {
+                    header.classList.remove('hidden');
+                    header.style.display = 'block';
+                    header.style.visibility = 'visible';
+                    header.style.opacity = '1';
+                }
                 
-                // Make page4 visible but not shown (for scroll animation)
+                if (hero) {
+                    hero.classList.remove('hidden');
+                    hero.style.display = 'flex';
+                    hero.style.visibility = 'visible';
+                    hero.style.opacity = '1';
+                }
+                
+                // Make content sections visible but not shown (for scroll animation)
                 if (page4) {
                     page4.classList.remove('hidden');
+                    page4.style.display = 'flex';
                 }
 
                 if (page5) {
                     page5.classList.remove('hidden');
+                    page5.style.display = 'flex';
                 }
-            
-            
+                
+                // Initialize scroll animations after elements are visible
                 setTimeout(() => {
                     initScrollAnimations();
                 }, 1000);
                 
-                // Reset animations for header and hero elements
+                // Reset animations for header and hero elements (rest of your existing code)
                 const badge = document.querySelector('.badge');
                 const h1Spans = document.querySelectorAll('h1 span');
                 const tagline = document.querySelector('.tagline');
@@ -409,4 +480,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call on load and add resize event listener
     handleResize();
     window.addEventListener('resize', handleResize);
+
+    // Add touch events for mobile
+    const downArrows = document.querySelectorAll('.down-arrow');
+    downArrows.forEach(arrow => {
+        // Add touchstart event
+        arrow.addEventListener('touchstart', function(e) {
+            // Prevent default touch behavior
+            e.preventDefault();
+            // Add visual feedback
+            this.style.transform = 'translateY(5px)';
+        }, { passive: false });
+        
+        // Add touchend event
+        arrow.addEventListener('touchend', function() {
+            // Remove visual feedback
+            this.style.transform = '';
+            // Trigger the click event
+            this.click();
+        });
+    });
 });

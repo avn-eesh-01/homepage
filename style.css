@@ -1849,3 +1849,60 @@ html, body {
         transform: translateY(0);
     }
 }
+
+/* Fix for mobile hero section appearing on first page */
+
+/* Ensure intro pages are on top of everything */
+.page1, .page2 {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9000 !important;
+    background-color: var(--dark-bg);
+}
+
+/* Mobile-specific handling */
+@media (max-width: 768px) {
+    /* Completely hide hero section when in intro pages */
+    body.initial-pages .hero,
+    body.initial-pages header,
+    body.initial-pages #solutions,
+    body.initial-pages #why-us {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        z-index: -1 !important;
+        position: absolute;
+        transform: translateY(100px);
+    }
+    
+    /* Fix visibility of intro pages */
+    body.initial-pages .page1,
+    body.initial-pages .page2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+    
+    /* Fix overflow issues */
+    body.initial-pages {
+        height: 100vh;
+        overflow: hidden !important;
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* Override any mobile-specific rules that might be showing the hero */
+@media screen and (max-width: 480px) {
+    .hero.hidden {
+        opacity: 0 !important;
+        transform: translateY(50px) !important;
+        visibility: hidden !important;
+        display: none !important;
+    }
+}
