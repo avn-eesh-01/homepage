@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
     const hero = document.querySelector('.hero');
     const page4 = document.querySelector('.page4');
     const page5 = document.querySelector('.page5');
+    const page6 = document.querySelector('.page6');
     
     // Ensure page1 is visible
     if (page1) {
@@ -57,6 +58,10 @@ window.addEventListener('load', () => {
     if (page5) {
         page5.classList.add('hidden');
         page5.style.display = 'none'; // Force display none
+    }
+    if (page6) {
+        page6.classList.add('hidden');
+        page6.style.display = 'none'; // Force display none
     }
     
     // Set body class to prevent scrolling
@@ -161,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hero = document.querySelector('.hero');
     const page4 = document.querySelector('.page4');
     const page5 = document.querySelector('.page5');
+    const page6 = document.querySelector('.page6');
     
     // First arrow click - show page 2
     const firstArrow = document.getElementById('first-arrow');
@@ -259,6 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     page5.classList.remove('hidden');
                     page5.style.display = 'flex';
                 }
+
+                if (page6) {
+                    page6.classList.remove('hidden');
+                    page6.style.display = 'flex';
+                }
                 
                 // Initialize scroll animations after elements are visible
                 setTimeout(() => {
@@ -340,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.observe(el);
             
         });
+
         
         // Staggered animation for solution cards
         document.querySelectorAll('.solution-card').forEach((card, index) => {
@@ -352,6 +364,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.why-us .card').forEach((card, index) => {
             card.style.transitionDelay = `${0.1 * index}s`;
             observer.observe(card);
+        });
+
+        // ADDED: Make sure Team section is observed and visible
+        const page6 = document.querySelector('.page6');
+        if (page6) {
+            observer.observe(page6);
+        }
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            
         });
     }
     

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="team" class="team-container-outer">
+    
+        <div class="team-container">
+            <div class="first-column">
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+                <div class="box box3"></div>
+            </div>
+            <div class="second-column">
+                <h1>MEET OUR TEAM</h1>
+                <p>We Explore, Create, Design, Develop only for your Growth</p>
+            </div>
+            <div class="third-column">
+                <div class="box box4"></div>
+                <div class="box box5"></div>
+                <div class="box box6">
+                    <div class="box box6-1"></div>
+                    <div class="box box6-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    /* team container CSS start */
+.team-container-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100dvw;
+  height: 150vh;
+}
+
+.team-container{
+  display: flex;
+  width: 80%;
+  height: 90%;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width:1450px) {
+  .team-container-outer {
+    width: 100dvw;
+    height: 180vh;
+  }
+  
+  .team-container{
+    display: flex;
+    width: 60%;
+    height: 90%;
+
+  }
+}
+
+.first-column, .second-column, .third-column {
+  width: 100%;
+  display: flex;
+}
+.first-column{
+  flex:2.5 1; 
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 25px;
+}
+.second-column{
+  flex:1 1; 
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.third-column{
+  flex:3 1; 
+  justify-content: space-between;
+  gap: 25px;
+}
+
+
+.box {
+  width: 30%;
+  border-radius: 40px;
+}
+.box:hover{
+  transform: scale(1.05);
+}
+
+.box1 { 
+  flex: 1 1;
+  background: url(TEAM/Aayush.jpeg);
+  background-size: cover;
+  height: 70%;
+  }
+
+.box2 { 
+  flex: 1 1;
+  background: url(TEAM/Lakshya.jpeg);
+  background-size: cover;
+  height: 70%;
+  align-self: end ;  }
+
+.box3 { 
+  flex: 1 1;
+  background: url(TEAM/Abhijeet.jpeg);
+  background-size: cover;
+  height: 70%;}
+
+.box4 { 
+  flex: 1 1;
+  background: url(TEAM/Sumit.jpeg);
+  background-size: cover;
+  height: 95%;
+  align-self: center;  }
+
+.box5 { 
+  flex: 1 1;
+  background: url(TEAM/Aman.jpeg);
+  background-size: cover;
+  height: 80%;
+  align-self: center ;  }
+
+.box6 { 
+  display: flex;
+  flex-direction: column;
+  height: 98%;
+  gap: 3%;  }
+
+.box6-1 { 
+  width: 100%;
+  flex: 1 1;
+  background: url(TEAM/Avneesh.jpg);
+  background-size: cover;  }
+
+.box6-2 { 
+  width: 100%;
+  flex: 1 1;
+  background: url(TEAM/Divyanshu.jpeg);
+  background-size: cover;  }
+
+
+.second-column h1 {
+  margin-top: 30px;
+  font-size: 7vw;
+  font-family: 'Inter';
+  font-weight: 1000;
+  color: whitesmoke;
+  white-space: nowrap;
+}
+
+.second-column p {
+  margin: 0;
+  font-size: 2vw;
+  font-family: 'Inter';
+  color: #A6A0A0;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .team-container-outer{
+    height: 90vh;
+  }
+  .box-6{
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-container-outer{
+    height: 45vh;
+  }
+  .box{
+    border-radius: 25px;
+  }
+  .box-6{
+    gap: 0;
+  }
+}
+
+/* team container CSS end */
+</style>
+</html>
