@@ -1309,7 +1309,7 @@ button,
 /* Fix the solution card hover effect to scale the entire card */
 .solution-card {
     background: linear-gradient(145deg, #191919, #0c0c0c);
-
+    border-radius: 20px;
     box-shadow: 0 0 10px red, 0 0 20px blue, 0 0 30px green;
     padding: 3rem 2rem 2.5rem;
     text-align: center;
@@ -1482,7 +1482,7 @@ button,
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 1px;
+    border-radius: 10px;
     padding: 2px;
     background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);

@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     header.style.display = 'block';
                     header.style.visibility = 'visible';
                     header.style.opacity = '1';
+                    header.style.animation = 'fadeInUp 0.5s ease forwards';
                 }
                 
                 if (hero) {
@@ -245,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     hero.style.display = 'flex';
                     hero.style.visibility = 'visible';
                     hero.style.opacity = '1';
+                    hero.style.animation = 'fadeInUp 0.5s ease forwards';
                 }
                 
                 // Make content sections visible but not shown (for scroll animation)
@@ -292,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     button.offsetHeight; // Trigger reflow
                     button.style.animation = 'fadeInUp 0.8s ease-out 0.8s forwards';
                 }
-            }, 1200);
+            }, 400);
         });
     }
     
