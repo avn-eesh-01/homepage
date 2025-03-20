@@ -1991,14 +1991,14 @@ body {
 
 .box1 {
     flex: 1 1;
-    background: url(TEAM/Aayush.jpeg);
+    background: url(Team/Aayush.jpeg);
     background-size: cover;
     height: 70%;
 }
 
 .box2 {
     flex: 1 1;
-    background: url(TEAM/Lakshya.jpeg);
+    background: url(Team/Lakshya.jpeg);
     background-size: cover;
     height: 70%;
     align-self: end;
@@ -2006,14 +2006,14 @@ body {
 
 .box3 {
     flex: 1 1;
-    background: url(TEAM/Abhijeet.jpeg);
+    background: url(Team/Abhijeet.jpeg);
     background-size: cover;
     height: 70%;
 }
 
 .box4 {
     flex: 1 1;
-    background: url(TEAM/Sumit.jpeg);
+    background: url(Team/Sumit.jpeg);
     background-size: cover;
     height: 95%;
     align-self: center;
@@ -2021,7 +2021,7 @@ body {
 
 .box5 {
     flex: 1 1;
-    background: url(TEAM/Aman.jpeg);
+    background: url(Team/Aman.jpeg);
     background-size: cover;
     height: 80%;
     align-self: center;
@@ -2037,14 +2037,14 @@ body {
 .box6-1 {
     width: 100%;
     flex: 1 1;
-    background: url(TEAM/Avneesh.jpg);
+    background: url(Team/Avneesh.jpg);
     background-size: cover;
 }
 
 .box6-2 {
     width: 100%;
     flex: 1 1;
-    background: url(TEAM/Divyanshu.jpeg);
+    background: url(Team/Divyanshu.jpeg);
     background-size: cover;
 }
 
