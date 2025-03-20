@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
         
         const page1Arrow = page1.querySelector('.down-arrow');
         if (page1Arrow) {
-            page1Arrow.style.animation = 'fadeIn 1s ease forwards 2s, bounce 2s infinite 3s';
+            page1Arrow.style.animation = 'fadeIn 1s ease forwards 0.5s, bounce 2s infinite 1s';
         }
     }
     
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (page2Arrow) {
                         page2Arrow.style.animation = 'none';
                         void page2Arrow.offsetHeight; // Trigger reflow
-                        page2Arrow.style.animation = 'fadeIn 1.2s ease forwards 2.2s, bounce 2s infinite 3.5s';
+                        page2Arrow.style.animation = 'fadeIn 1.5s ease forwards, bounce 2s infinite 1.5s';
                     }
                 }
             }, 800);
