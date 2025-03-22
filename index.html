@@ -267,6 +267,89 @@
     </div>
   </section>
 
+  <section id="our-work" class="page7 hidden animate-on-scroll">
+    <div class="page7-header">
+      <h1>Innovate. Build. Elevate.</h1>
+      <p>A collection of our best work, featuring innovative web solutions, seamless user experiences, and high-performance
+        applications that drive results. </p>
+    </div>
+    
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterTestimonials('all')">All</button>
+      <button class="filter-btn" onclick="filterTestimonials('website')">Website</button>
+      <button class="filter-btn" onclick="filterTestimonials('social')">Social Media</button>
+      <button class="filter-btn" onclick="filterTestimonials('branding')">Branding</button>
+    </div>
+    
+    <div class="testimonial-grid" id="testimonial-grid">
+      <div class="testimonial" data-category="website"
+        onclick="openPopup('media/kodify (3).png','Kodify','AI Solution Agency','We built Kodify.in, a sleek, high-performance website with a modern UI/UX, responsive design, and seamless functionality. Our solution enhances their digital presence, ensuring an engaging and smooth user experience.')">
+        <img src="media/kodify (3).png" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>Kodify</h3>
+          <p>AI Solutions Agency</p>
+        </div>
+      </div>
+    
+      <div class="testimonial" data-category="website"
+        onclick="openPopup('media/Brown Coffee House Cafe Loho.png','Pumpkin Coffee House', 'A Coffee Cafe','We designed and developed a sleek, responsive, and fast-loading static website for Pumpkin Coffee House. The site showcases their menu, ambiance, and brand story with an intuitive design, ensuring a delightful user experience for coffee lover')">
+        <img src="media/Brown Coffee House Cafe Loho.png" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>Pumpkin Coffee House</h3>
+          <p>A Coffee Cafe</p>
+        </div>
+      </div>
+      <div class="testimonial" data-category="social"
+        onclick="openPopup('media/legal blue.jpeg','Legal Blue', 'An Advocate Firm','We managed social media for a renowned law firm, crafting engaging content to enhance their online presence. Through strategic posts, we spread legal literacy, educated the audience on rights and laws, and built a strong digital brand for the firm.')">
+        <img src="media/legal blue.jpeg" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>Legal Blue</h3>
+          <p>An Advocate Firm</p>
+        </div>
+      </div>
+      <div class="testimonial" data-category="social"
+        onclick="openPopup('media/Black and White Modern Fitness Club Logo.png','Aldenaire Fitness Club','A Fitness Gym', 'We managed Aldenaire Fitness Club s social media presence, creating engaging fitness content, workout tips, and motivational posts to build a strong community.')">
+        <img src="media/Black and White Modern Fitness Club Logo.png" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>Aldenaire Fitness Club</h3>
+          <p>A Fitness Gym</p>
+        </div>
+      </div>
+      <div class="testimonial" data-category="branding"
+        onclick="openPopup('media/ca sunila.jpeg','CA Sunila', 'A Finacial consultant','We helped our client establish a strong personal brand in financial literacy across multiple social media platforms. Through strategic content creation, audience engagement, and expert insights, we positioned her as a trusted voice in finance, empowering people with valuable financial knowledge. ')">
+        <img src="media/ca sunila.jpeg" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>CA Sunila</h3>
+          <p>Finance Specialist</p>
+        </div>
+      </div>
+      <div class="testimonial" data-category="branding"
+        onclick="openPopup('media/skin beauty products.png', 'Skin Beauty','Beauty products & Cosmetics','We built a strong personal brand for a cosmetic entrepreneur, positioning her as an expert in skincare and beauty. Through strategic content, engaging visuals, and audience interaction, we established trust and credibility, growing her influence in the beauty industry. 💄✨')">
+        <img src="media/skin beauty products.png" alt="Company Logo">
+        <div class="head-testimonial">
+          <h3>Skin Beauty </h3>
+          <p>Beauty products & Cosmetics</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-overlay" id="overlay">
+      <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">Close</button>
+        <div class="popup-content">
+          <div class="popup-header">
+            <div>
+              <h2 id="popup-title"></h2>
+              <h3 id="popup-subtitle"></h3>
+            </div>
+            <img id="popup-logo" src="" alt="Company Logo">
+          </div>
+          <p class="popup-description" id="popup-description"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script src="script.js"></script>
 </body>
 

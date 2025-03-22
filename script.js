@@ -7,7 +7,10 @@ window.addEventListener('load', () => {
     const page4 = document.querySelector('.page4');
     const page5 = document.querySelector('.page5');
     const page6 = document.querySelector('.page6');
-    
+    const page7 = document.querySelector('.page7');
+    const page8 = document.querySelector('.page8');
+    const page9 = document.querySelector('.page9');
+
     // Ensure page1 is visible
     if (page1) {
         page1.classList.remove('hidden');
@@ -62,6 +65,18 @@ window.addEventListener('load', () => {
     if (page6) {
         page6.classList.add('hidden');
         page6.style.display = 'none'; // Force display none
+    }
+    if (page7) {
+        page7.classList.add('hidden');
+        page7.style.display = 'none'; // Force display none
+    }
+    if (page8) {
+        page7.classList.add('hidden');
+        page7.style.display = 'none'; // Force display none
+    }
+    if (page9) {
+        page7.classList.add('hidden');
+        page7.style.display = 'none'; // Force display none
     }
     
     // Set body class to prevent scrolling
@@ -167,6 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const page4 = document.querySelector('.page4');
     const page5 = document.querySelector('.page5');
     const page6 = document.querySelector('.page6');
+    const page7 = document.querySelector('.page7');
+    const page8 = document.querySelector('.page8');
+    const page9 = document.querySelector('.page9');
     
     // First arrow click - show page 2
     const firstArrow = document.getElementById('first-arrow');
@@ -223,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const hero = document.querySelector('.hero');
             const page4 = document.querySelector('.page4');
             const page5 = document.querySelector('.page5');
+            const page6 = document.querySelector('.page6');
             
             // Hide page 2 with extra mobile-specific styles
             if (page2) {
@@ -269,6 +288,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (page6) {
                     page6.classList.remove('hidden');
                     page6.style.display = 'flex';
+                }
+
+                if (page7) {
+                    page7.classList.remove('hidden');
+                    page7.style.display = 'flex';
                 }
                 
                 // Initialize scroll animations after elements are visible
@@ -376,6 +400,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.observe(el);
             
         });
+
+        // ADDED: Make sure Portfolio section is observed and visible
+        const page7 = document.querySelector('.page7');
+        if (page7) {
+            observer.observe(page7);
+        }
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            
+        });
     }
     
     // Hamburger menu functionality
@@ -401,26 +436,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Handle smooth scrolling for anchor links - UPDATED to ensure why-us works
+    // Handle smooth scrolling for anchor links - UPDATED to ensure all sections work
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                e.preventDefault();
-                
-                // Special case for #solutions - make it visible first
-                if (targetId === '#solutions') {
-                    const solutionsSection = document.querySelector('.page4');
-                    solutionsSection.classList.remove('hidden');
+                // Close mobile menu if open
+                const hamburger = document.querySelector('.hamburger');
+                const navLinks = document.querySelector('.nav-links');
+                if (hamburger && hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
                 }
-                
-                
-                // Smooth scroll
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+
+                // Smooth scroll to target
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100, // Offset for header
+                    behavior: 'smooth'
                 });
             }
         });
@@ -591,3 +626,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function filterTestimonials(category) {
+    let testimonials = document.querySelectorAll('.testimonial');
+    let buttons = document.querySelectorAll('.filter-btn');
+
+    buttons.forEach(button => button.classList.remove('active'));
+    event.target.classList.add('active');
+
+    testimonials.forEach(testimonial => {
+if (category === 'all' || testimonial.getAttribute('data-category') === category) {
+testimonial.style.visibility = 'visible';
+testimonial.style.position = 'relative';
+} else {
+testimonial.style.visibility = 'hidden';
+testimonial.style.position = 'absolute';
+}
+});
+
+}
+
+function openPopup(logoUrl, title, subtitle, description) {
+document.getElementById('popup-logo').src = logoUrl; 
+document.getElementById('popup-title').innerText = title;
+document.getElementById('popup-subtitle').innerText = subtitle;
+document.getElementById('popup-description').innerText = description;
+
+document.getElementById('popup').style.display = 'block';
+document.getElementById('overlay').style.display = 'block'; // Show overlay
+}
+
+function closePopup() {
+document.getElementById('popup').style.display = 'none';
+document.getElementById('overlay').style.display = 'none'; // Hide overlay
+}
