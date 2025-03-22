@@ -2091,6 +2091,10 @@ img {
         pointer-events: auto;
     }
 
+    .team-container-outer{
+        min-height: auto;
+        height: auto;
+    }
     .box.touched .team-member-name,
     .box.touched .team-member-role,
     .box.touched .linkedin-btn {
@@ -2142,6 +2146,11 @@ img {
         padding: 1rem;
     }
 
+    .team-container-outer{
+        min-height: auto;
+        height: auto;
+        /* padding: 0; */
+    }
     .team-member-name,
     .team-member-role
     {
@@ -2152,8 +2161,9 @@ img {
     }
     .linkedin-btn{
         border-radius: 15px;
-        padding: 8px;
-        font-size: 0.4rem;
+        padding: 6px;
+        font-size: 0.3rem;
+        text-align: center;
     }
     
 }
