@@ -2175,6 +2175,7 @@ img {
     }
 
     .linkedin-btn {
+        visibility: hidden;
         border-radius: 15px;
         padding: 6px;
         font-size: 0.3rem;
