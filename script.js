@@ -71,8 +71,8 @@ window.addEventListener('load', () => {
         page7.style.display = 'none'; // Force display none
     }
     if (page8) {
-        page7.classList.add('hidden');
-        page7.style.display = 'none'; // Force display none
+        page8.classList.add('hidden');
+        page8.style.display = 'none'; // Force display none
     }
     if (page9) {
         page7.classList.add('hidden');
@@ -242,6 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const page4 = document.querySelector('.page4');
             const page5 = document.querySelector('.page5');
             const page6 = document.querySelector('.page6');
+            const page7 = document.querySelector('.page7');
+            const page8 = document.querySelector('.page8');
+            const page9 = document.querySelector('.page9');
             
             // Hide page 2 with extra mobile-specific styles
             if (page2) {
@@ -294,6 +297,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     page7.classList.remove('hidden');
                     page7.style.display = 'flex';
                 }
+
+                if (page8) {
+                    page8.classList.remove('hidden');
+                    page8.style.display = 'flex';
+                }
+                
+                if (page9) {
+                    page9.classList.remove('hidden');
+                    page9.style.display = 'flex';
+                }
+                
                 
                 // Initialize scroll animations after elements are visible
                 setTimeout(() => {
@@ -405,6 +419,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const page7 = document.querySelector('.page7');
         if (page7) {
             observer.observe(page7);
+        }
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            
+        });
+
+        // ADDED: Make sure CTA section is observed and visible
+        const page8 = document.querySelector('.page8');
+        if (page8) {
+            observer.observe(page8);
+        }
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            
+        });
+
+        const page9 = document.querySelector('.page9');
+        if (page9) {
+            observer.observe(page9);
         }
         
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
