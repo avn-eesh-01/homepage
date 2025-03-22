@@ -525,4 +525,55 @@ document.addEventListener('DOMContentLoaded', () => {
             this.click();
         });
     });
+
+    // Handle team member box interactions
+    const teamBoxes = document.querySelectorAll('.box');
+    let touchTimeout;
+
+    teamBoxes.forEach(box => {
+        // Touch start event
+        box.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            clearTimeout(touchTimeout);
+            
+            // Remove touched class from all other boxes
+            teamBoxes.forEach(otherBox => {
+                if (otherBox !== box) {
+                    otherBox.classList.remove('touched');
+                }
+            });
+            
+            box.classList.add('touched');
+        });
+
+        // Touch end event
+        box.addEventListener('touchend', () => {
+            touchTimeout = setTimeout(() => {
+                box.classList.remove('touched');
+            }, 1000); // Keep overlay visible for 1 second after touch
+        });
+
+        // Handle click events for desktop
+        box.addEventListener('click', (e) => {
+            const overlay = box.querySelector('.team-member-overlay');
+            const linkedInBtn = e.target.closest('.linkedin-btn');
+            
+            // If clicking the LinkedIn button, allow the default action
+            if (linkedInBtn) {
+                return;
+            }
+            
+            // Otherwise prevent default to show overlay
+            e.preventDefault();
+        });
+    });
+
+    // Close overlay when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.box')) {
+            teamBoxes.forEach(box => {
+                box.classList.remove('touched');
+            });
+        }
+    });
 });
