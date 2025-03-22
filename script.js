@@ -566,6 +566,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Otherwise prevent default to show overlay
             e.preventDefault();
         });
+
+        // Handle click events for mobile
+        box.addEventListener('touchstart', (e) => {
+            const overlay = box.querySelector('.team-member-overlay');
+            const linkedInBtn = e.target.closest('.linkedin-btn');
+            
+            // If clicking the LinkedIn button, allow the default action
+            if (linkedInBtn) {
+                return;
+            }
+
+            // Otherwise prevent default to show overlay
+            e.preventDefault();
+        });
     });
 
     // Close overlay when clicking outside
