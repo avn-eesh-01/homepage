@@ -2604,6 +2604,7 @@ html {
         text-align: center !important;
     }
     .cta-right h3{
+        text-align: center;
         margin-top: 30px;
     }
 }
@@ -2612,13 +2613,15 @@ html {
 .page9 {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
 }
 
 .footer {
-    background: url('YOUR_BACKGROUND_IMAGE_URL_HERE') no-repeat center center/cover;
+    position: relative;
+    background-color: var(--dark-bg);
     color: white;
-    padding: 50px 20px;
+    padding: 3rem 2rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 .footer-overlay {
@@ -2627,94 +2630,170 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(2, 35, 2);
-    z-index: 1;
+    background: radial-gradient(circle at center, rgba(0, 100, 100, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
 }
 
 .footer-content {
-    position: relative;
-    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
 }
 
 .footer-logo {
-    flex: 1;
-    text-align: left;
+    display: flex;
+    align-items: center;
 }
 
 .footer-logo img {
-    height: 80px;
-    /* Further increased size */
+    height: 50px;
     width: auto;
 }
 
 .social-icons {
-    flex: 1;
-    text-align: right;
-    z-index: 10;
+    display: flex;
+    gap: 1.5rem;
 }
 
 .social-icons a {
     color: white;
-    margin: 0 20px;
-    /* Adjusted spacing */
-    font-size: 28px;
-    transition: 0.3s;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #21FF94;
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .footer-links {
-    flex: 2;
-    text-align: center;
-    margin-top: 20px;
-    z-index: 20;
-    /* Increased z-index */
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-links a {
-    color: white;
+    color: #aaa;
     text-decoration: none;
-    font-size: 16px;
-    margin: 0 30px;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #21FF94;
+    color: white;
 }
 
 .footer-bottom {
     text-align: center;
-    width: 100%;
-    margin-top: 40px;
-    color: #ffffff;
-    font-size: 14px;
-    z-index: 20;
-    /* Increased z-index */
+    color: #777;
+    font-size: 0.875rem;
     position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Responsive adjustments for footer */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        text-align: center;
+        gap: 1.5rem;
     }
-
-    .footer-links {
-        margin-top: 10px;
-        text-align: center;
-    }
-
+    
     .social-icons {
-        text-align: center;
-        margin-top: 20px;
+        margin-top: 1rem;
     }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+/* Popup and overlay improvements */
+.overlay,
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    border: 2px solid rgb(78, 23, 78);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 255, 157, 0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 10001;
+    transition: all 0.3s ease;
+}
+
+.popup .close-btn:hover {
+    background: red;
+    transform: scale(1.05);
+}
+
+.popup-content {
+    position: relative;
+    z-index: 10000;
+}
+
+/* Adjust testimonial hover behavior so it doesn't interfere with popup */
+.testimonial {
+    transform: scale(1);
+    transition: transform 0.3s ease, z-index 0s;
+    z-index: 1;
+}
+
+.testimonial:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+/* Remove hover transform when popup is active */
+body.popup-active .testimonial:hover {
+    transform: none;
 }

@@ -682,16 +682,51 @@ testimonial.style.position = 'absolute';
 }
 
 function openPopup(logoUrl, title, subtitle, description) {
-document.getElementById('popup-logo').src = logoUrl; 
-document.getElementById('popup-title').innerText = title;
-document.getElementById('popup-subtitle').innerText = subtitle;
-document.getElementById('popup-description').innerText = description;
-
-document.getElementById('popup').style.display = 'block';
-document.getElementById('overlay').style.display = 'block'; // Show overlay
+    // Update popup content
+    document.getElementById('popup-logo').src = logoUrl; 
+    document.getElementById('popup-title').innerText = title;
+    document.getElementById('popup-subtitle').innerText = subtitle;
+    document.getElementById('popup-description').innerText = description;
+    
+    // Add class to body to disable hover effects while popup is open
+    document.body.classList.add('popup-active');
+    
+    // Show popup and overlay with fade-in effect
+    const popup = document.getElementById('popup');
+    const overlay = document.getElementById('overlay');
+    
+    overlay.style.display = 'block';
+    popup.style.display = 'block';
+    
+    // Force reflow to enable transition
+    void overlay.offsetWidth;
+    void popup.offsetWidth;
+    
+    // Add animation
+    overlay.style.opacity = '1';
+    popup.style.opacity = '1';
 }
 
 function closePopup() {
-document.getElementById('popup').style.display = 'none';
-document.getElementById('overlay').style.display = 'none'; // Hide overlay
+    // Hide popup and overlay
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+    
+    // Remove body class
+    document.body.classList.remove('popup-active');
 }
+
+// Close popup when clicking on overlay
+document.getElementById('overlay').addEventListener('click', function(e) {
+    // Only close if clicking directly on the overlay, not the popup
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup with ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePopup();
+    }
+});
