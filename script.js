@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
         page1.style.visibility = 'visible';
         page1.style.opacity = '1';
         page1.style.transform = 'translateY(0)';
-        page1.style.zIndex = '9000'; // Very high z-index
+        page1.style.zIndex = '9000';
         page1.style.position = 'fixed';
         page1.style.backgroundColor = 'var(--dark-bg)';
         
@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
         const page1Text = page1.querySelector('.maintext');
         if (page1Text) {
             page1Text.style.animation = 'none';
-            page1Text.offsetHeight; // Trigger reflow
+            page1Text.offsetHeight;
             page1Text.style.animation = 'fadeInUp 1.2s ease forwards';
         }
         
@@ -145,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Special handling for navbar elements - disable inversion
         const navbarElements = document.querySelectorAll('.nav-links a, .hamburger, .nav-buttons button');
         
         navbarElements.forEach(element => {
@@ -232,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Second arrow click - show header and hero section (page 3)
     const secondArrow = document.getElementById('second-arrow');
     if (secondArrow) {
         secondArrow.addEventListener('click', () => {
@@ -246,16 +244,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const page8 = document.querySelector('.page8');
             const page9 = document.querySelector('.page9');
             
-            // Hide page 2 with extra mobile-specific styles
             if (page2) {
                 page2.classList.add('hidden');
                 page2.style.display = 'none';
                 page2.style.zIndex = '-1';
             }
             
-            // Small delay to ensure smooth transition
             setTimeout(() => {
-                // Remove the initial-pages class to enable scrolling
                 document.body.classList.remove('initial-pages');
                 document.body.style.overflow = 'visible';
                 document.body.style.position = 'static'; // Reset position
@@ -314,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     initScrollAnimations();
                 }, 1000);
                 
-                // Reset animations for header and hero elements (rest of your existing code)
                 const badge = document.querySelector('.badge');
                 const h1Spans = document.querySelectorAll('h1 span');
                 const tagline = document.querySelector('.tagline');
@@ -322,25 +316,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (badge) {
                     badge.style.animation = 'none';
-                    badge.offsetHeight; // Trigger reflow
+                    badge.offsetHeight;
                     badge.style.animation = 'fadeInDown 0.8s ease-out';
                 }
                 
                 h1Spans.forEach((span, index) => {
                     span.style.animation = 'none';
-                    span.offsetHeight; // Trigger reflow
+                    span.offsetHeight;
                     span.style.animation = `fadeInUp 0.8s ease-out ${0.2 + index * 0.2}s forwards`;
                 });
                 
                 if (tagline) {
                     tagline.style.animation = 'none';
-                    tagline.offsetHeight; // Trigger reflow
+                    tagline.offsetHeight;
                     tagline.style.animation = 'fadeInUp 0.8s ease-out 0.6s forwards';
                 }
                 
                 if (button) {
                     button.style.animation = 'none';
-                    button.offsetHeight; // Trigger reflow
+                    button.offsetHeight;
                     button.style.animation = 'fadeInUp 0.8s ease-out 0.8s forwards';
                 }
             }, 400);
@@ -349,17 +343,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function initScrollAnimations() {
         const isMobile = window.innerWidth <= 768;
-        const threshold = isMobile ? 0.05 : 0.15; // Lower threshold on mobile
+        const threshold = isMobile ? 0.05 : 0.15;
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                     
-                    // If it's a solution card, apply appropriate animation
                     if (entry.target.classList.contains('solution-card')) {
                         if (isMobile) {
-                            // Simpler animation on mobile
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0) scale(1)';
                         } else {
@@ -393,7 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Staggered animation for solution cards
         document.querySelectorAll('.solution-card').forEach((card, index) => {
-            // Add delay based on index for staggered animation
             card.style.transitionDelay = `${0.2 * index}s`;
             observer.observe(card);
         });
@@ -448,7 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Hamburger menu functionality
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navButtons = document.querySelector('.nav-buttons');
@@ -461,7 +451,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Close mobile menu when a link is clicked
     const mobileLinks = document.querySelectorAll('.nav-links a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -489,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Smooth scroll to target
                 window.scrollTo({
-                    top: targetElement.offsetTop - 100, // Offset for header
+                    top: targetElement.offsetTop - 100, 
                     behavior: 'smooth'
                 });
             }
@@ -572,31 +561,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Call on load and add resize event listener
     handleResize();
     window.addEventListener('resize', handleResize);
 
     // Add touch events for mobile
     const downArrows = document.querySelectorAll('.down-arrow');
     downArrows.forEach(arrow => {
-        // Add touchstart event
         arrow.addEventListener('touchstart', function(e) {
-            // Prevent default touch behavior
             e.preventDefault();
-            // Add visual feedback
             this.style.transform = 'translateY(5px)';
         }, { passive: false });
         
         // Add touchend event
         arrow.addEventListener('touchend', function() {
-            // Remove visual feedback
             this.style.transform = '';
-            // Trigger the click event
+            
             this.click();
         });
     });
 
-    // Handle team member box interactions
     const teamBoxes = document.querySelectorAll('.box');
     let touchTimeout;
 
@@ -606,7 +589,6 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             clearTimeout(touchTimeout);
             
-            // Remove touched class from all other boxes
             teamBoxes.forEach(otherBox => {
                 if (otherBox !== box) {
                     otherBox.classList.remove('touched');
@@ -616,43 +598,35 @@ document.addEventListener('DOMContentLoaded', () => {
             box.classList.add('touched');
         });
 
-        // Touch end event
         box.addEventListener('touchend', () => {
             touchTimeout = setTimeout(() => {
                 box.classList.remove('touched');
-            }, 1000); // Keep overlay visible for 1 second after touch
+            }, 1000); 
         });
 
-        // Handle click events for desktop
         box.addEventListener('click', (e) => {
             const overlay = box.querySelector('.team-member-overlay');
             const linkedInBtn = e.target.closest('.linkedin-btn');
             
-            // If clicking the LinkedIn button, allow the default action
             if (linkedInBtn) {
                 return;
             }
             
-            // Otherwise prevent default to show overlay
             e.preventDefault();
         });
 
-        // Handle click events for mobile
         box.addEventListener('touchstart', (e) => {
             const overlay = box.querySelector('.team-member-overlay');
             const linkedInBtn = e.target.closest('.linkedin-btn');
             
-            // If clicking the LinkedIn button, allow the default action
             if (linkedInBtn) {
                 return;
             }
 
-            // Otherwise prevent default to show overlay
             e.preventDefault();
         });
     });
 
-    // Close overlay when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.box')) {
             teamBoxes.forEach(box => {
@@ -682,43 +656,37 @@ testimonial.style.position = 'absolute';
 }
 
 function openPopup(logoUrl, title, subtitle, description) {
-    // Update popup content
     document.getElementById('popup-logo').src = logoUrl; 
     document.getElementById('popup-title').innerText = title;
     document.getElementById('popup-subtitle').innerText = subtitle;
     document.getElementById('popup-description').innerText = description;
     
-    // Add class to body to disable hover effects while popup is open
     document.body.classList.add('popup-active');
     
-    // Show popup and overlay with fade-in effect
     const popup = document.getElementById('popup');
     const overlay = document.getElementById('overlay');
     
     overlay.style.display = 'block';
     popup.style.display = 'block';
     
-    // Force reflow to enable transition
     void overlay.offsetWidth;
     void popup.offsetWidth;
     
-    // Add animation
     overlay.style.opacity = '1';
     popup.style.opacity = '1';
 }
 
 function closePopup() {
-    // Hide popup and overlay
     document.getElementById('popup').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
     
-    // Remove body class
+    
     document.body.classList.remove('popup-active');
 }
 
 // Close popup when clicking on overlay
 document.getElementById('overlay').addEventListener('click', function(e) {
-    // Only close if clicking directly on the overlay, not the popup
+    
     if (e.target === this) {
         closePopup();
     }

@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    /* Prevent horizontal scrolling */
     cursor: none;
     /* Hide default cursor */
 }
@@ -121,19 +120,15 @@ body.initial-pages {
     mix-blend-mode: difference;
     transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, background 0.3s ease, border 0.3s ease, mix-blend-mode 0.3s ease;
     display: block;
-    /* Ensure cursor is visible */
     opacity: 1;
     /* Ensure cursor is not transparent */
     will-change: transform;
-    /* Performance optimization for smooth animations */
 }
 
-/* Remove the cursor-follower class */
 .cursor-follower {
     display: none;
 }
 
-/* Animations */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -261,7 +256,6 @@ header {
 nav {
     position: relative;
     height: 60px;
-    /* Fixed height for consistent alignment */
     padding: 0 1rem;
     display: flex;
     justify-content: space-between;
@@ -279,7 +273,7 @@ nav {
     justify-content: center;
 }
 
-/* Update the nav-links styles for better hover effect */
+
 .nav-links {
     border: 1px solid whitesmoke;
     background: linear-gradient(115deg, #f8f9fa, #f1f1f1b1);
@@ -301,13 +295,11 @@ nav {
     transition: all 0.3s ease;
 }
 
-/* Replace the underline hover effect with box hover effect */
+
 .nav-links a::after {
     display: none;
-    /* Remove the underline effect */
 }
 
-/* Add the box hover effect */
 .nav-links a:hover {
     background: linear-gradient(145deg, #32c96f, #18aab5);
     color: white;
@@ -315,17 +307,14 @@ nav {
     transform: scale(1.1);
     transition: all 0.3s ease;
     mix-blend-mode: normal;
-    /* Explicitly set normal blend mode */
 }
 
-/* Add these styles to override the cursor behavior for navbar */
 .nav-links a,
 .hamburger,
 .nav-buttons button {
     position: relative;
     z-index: 100;
     mix-blend-mode: normal;
-    /* Ensure normal blend mode */
 }
 
 /* Custom cursor styles with normal blend mode for navbar */
@@ -346,7 +335,6 @@ header .hamburger {
     isolation: isolate;
 }
 
-/* Update hover style for navbar links to not use mix-blend-mode */
 .nav-links a:hover {
     background: linear-gradient(145deg, #32c96f, #18aab5);
     color: white;
@@ -356,17 +344,14 @@ header .hamburger {
     mix-blend-mode: normal !important;
 }
 
-/* Add these styles to override the cursor behavior for navbar */
 .nav-links a,
 .hamburger,
 .nav-buttons button {
     position: relative;
     z-index: 100;
     mix-blend-mode: normal;
-    /* Ensure normal blend mode */
 }
 
-/* Custom cursor styles with normal blend mode for navbar */
 .nav-links a:hover~.cursor,
 .hamburger:hover~.cursor,
 .nav-buttons button:hover~.cursor {
@@ -384,7 +369,6 @@ header .hamburger {
     isolation: isolate;
 }
 
-/* Update hover style for navbar links to not use mix-blend-mode */
 .nav-links a:hover {
     background: linear-gradient(145deg, #32c96f, #18aab5);
     color: white;
@@ -394,7 +378,6 @@ header .hamburger {
     mix-blend-mode: normal !important;
 }
 
-/* Add these styles to override the cursor behavior for navbar */
 .nav-links a,
 .hamburger,
 .nav-buttons button {
@@ -404,7 +387,6 @@ header .hamburger {
     /* Ensure normal blend mode */
 }
 
-/* Custom cursor styles with normal blend mode for navbar */
 .nav-links a:hover~.cursor,
 .hamburger:hover~.cursor,
 .nav-buttons button:hover~.cursor {
@@ -422,7 +404,6 @@ header .hamburger {
     isolation: isolate;
 }
 
-/* Update hover style for navbar links to not use mix-blend-mode */
 .nav-links a:hover {
     background: linear-gradient(145deg, #32c96f, #18aab5);
     color: white;
@@ -440,7 +421,6 @@ header .hamburger {
 }
 
 .nav-buttons .get-in-touch-btn {
-    /* background: rgba(86, 85, 85, 0.747); */
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     width: 150px;
@@ -452,7 +432,7 @@ header .hamburger {
     font-weight: 500;
 }
 
-/* Hero Section Styles - Updated layout */
+/* Hero Section Styles */
 .hero {
     margin-top: 30px;
     text-align: center;
@@ -792,7 +772,6 @@ h1 span:first-child {
     }
 }
 
-/* Ripple Effect */
 button {
     position: relative;
     overflow: hidden;
@@ -844,7 +823,6 @@ body.has-cursor::before {
     opacity: 1;
 }
 
-/* Update feature cards z-index */
 .feature-card {
     text-align: center;
     position: relative;
@@ -853,7 +831,6 @@ body.has-cursor::before {
     flex-direction: column;
     justify-content: flex-end;
     min-height: 200px;
-    /* Increased for image content */
 }
 
 .feature-card img {
@@ -899,7 +876,6 @@ body.has-cursor::before {
     transition: all 0.3s ease;
 }
 
-/* Transform hamburger into X when active */
 .hamburger.active span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
 }
@@ -914,13 +890,12 @@ body.has-cursor::before {
 
 @media screen and (max-width: 768px) {
 
-    /* Hide default nav elements */
+    
     .nav-links,
     .nav-buttons {
         display: none;
     }
 
-    /* Show hamburger and make it white for visibility */
     .hamburger {
         display: flex;
         flex-direction: column;
@@ -932,18 +907,14 @@ body.has-cursor::before {
         z-index: 1001;
         cursor: pointer;
         width: 30px;
-        /* Set fixed width */
         height: 30px;
-        /* Set fixed height */
     }
 
-    /* Make hamburger lines white for better visibility on dark background */
     .hamburger span {
         background-color: white;
         margin: 2px 0;
     }
 
-    /* Active state - whiter and brighter */
     .hamburger.active span {
         background-color: white;
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
@@ -1013,9 +984,7 @@ body.has-cursor::before {
     display: block;
     /* Ensure cursor is visible */
     opacity: 1;
-    /* Ensure cursor is not transparent */
     will-change: transform;
-    /* Performance optimization for smooth animations */
 }
 
 /* Remove hover scaling effect */
@@ -1030,7 +999,6 @@ button:hover~.cursor,
     cursor: none !important;
 }
 
-/* Ensure cursor stays hidden on interactive elements */
 a,
 button,
 .hamburger,
@@ -1066,9 +1034,6 @@ button,
     }
 }
 
-/* Add these media queries for page1 and page2 responsiveness */
-
-/* Standard styles remain unchanged */
 
 /* Media queries for page1 and page2 */
 @media screen and (max-width: 1024px) {
@@ -1147,7 +1112,7 @@ button,
         }
     }
 
-    /* Reduce transition time on mobile for better UX */
+    /* Reduce transition time on mobile */
     .page1,
     .page2 {
         transition: opacity 0.9s ease, transform 0.9s ease;
@@ -1210,7 +1175,6 @@ button,
     }
 }
 
-/* Fix for iPhone 5/SE and other very small devices */
 @media screen and (max-width: 320px) {
     .maintext {
         font-size: 1.8rem;
@@ -1222,7 +1186,7 @@ button,
         border-width: 5px;
     }
 
-    /* Adjust animation timing for smoother performance on older devices */
+    
     .maintext {
         animation: fadeInUp 1s ease forwards;
     }
@@ -1233,7 +1197,6 @@ button,
     }
 }
 
-/* Fix for mobile devices */
 @media (max-width: 768px) {
     .cursor {
         display: none;
@@ -1310,7 +1273,6 @@ button,
     margin: 0 auto;
 }
 
-/* Updated solution card styles with larger images */
 .solutions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1322,7 +1284,6 @@ button,
     margin-right: auto;
 }
 
-/* Fix the solution card hover effect to scale the entire card */
 .solution-card {
     background: linear-gradient(145deg, #191919, #0c0c0c);
     border-radius: 20px;
@@ -1353,9 +1314,7 @@ button,
 .solution-icon img {
     border-radius: 10px;
     width: 300px;
-    /* Keep the larger icon size */
     height: 300px;
-    /* Keep the larger icon size */
     object-fit: contain;
     transition: transform 0.4s ease, filter 0.4s ease;
 }
@@ -1395,7 +1354,6 @@ button,
     margin: 0 auto;
 }
 
-/* Add a subtle gradient overlay to the cards */
 .solution-card::before {
     content: '';
     position: absolute;
@@ -1414,7 +1372,6 @@ button,
     opacity: 1;
 }
 
-/* Add a subtle glow effect on hover */
 .solution-card::after {
     content: '';
     position: absolute;
@@ -1432,7 +1389,6 @@ button,
     opacity: 0.7;
 }
 
-/* Ensure text stays on top of the overlay */
 .solution-card h3,
 .solution-card p,
 .solution-icon {
@@ -1440,7 +1396,6 @@ button,
     z-index: 1;
 }
 
-/* Animation classes for scroll reveal */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -1658,7 +1613,6 @@ img {
 
 /* Mobile responsive fixes for solutions page */
 
-/* Solutions grid - make it responsive */
 .solutions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1680,7 +1634,6 @@ img {
     justify-content: flex-start;
 }
 
-/* Make images responsive */
 .solution-icon {
     width: 100%;
     height: auto;
@@ -1696,7 +1649,6 @@ img {
     object-fit: cover;
 }
 
-/* Override the global img style that's causing problems */
 img {
     max-width: 100%;
     height: auto;
@@ -1715,7 +1667,6 @@ img {
     margin: auto;
 }
 
-/* Improved section spacing */
 .page4,
 .page5 {
     padding-left: max(1rem, env(safe-area-inset-left));
@@ -1724,7 +1675,6 @@ img {
     padding-bottom: 4rem;
 }
 
-/* Section headers */
 .section-header {
     padding: 0 1rem;
 }
@@ -1771,7 +1721,6 @@ img {
         margin-bottom: 2rem;
     }
 
-    /* Remove hover effects on mobile */
     .solution-card:hover {
         transform: none !important;
         box-shadow: none !important;
@@ -1797,7 +1746,6 @@ img {
         padding: 2rem 1.5rem;
     }
 
-    /* Ensure no hover effects on smaller screens */
     .solution-card:hover {
         transform: none !important;
         box-shadow: none !important;
@@ -1819,7 +1767,6 @@ img {
     }
 }
 
-/* Improved visibility for solution cards on mobile */
 @media screen and (max-width: 768px) {
     .solution-card {
         opacity: 1;
@@ -1833,9 +1780,7 @@ img {
     }
 }
 
-/* Fix for mobile hero section appearing on first page */
 
-/* Ensure intro pages are on top of everything */
 .page1,
 .page2 {
     position: fixed !important;
@@ -2145,7 +2090,6 @@ img {
     cursor: pointer;
 }
 
-/* Remove any conflicting hover states */
 .box6-1:hover .team-member-overlay,
 .box6-2:hover .team-member-overlay {
     opacity: 1;
@@ -2286,7 +2230,6 @@ img {
     width: 100%;
     height: 200px;
     object-fit: contain;
-    /* background: #000000; */
     padding: 20px;
 }
 
@@ -2781,7 +2724,6 @@ html {
     z-index: 10000;
 }
 
-/* Adjust testimonial hover behavior so it doesn't interfere with popup */
 .testimonial {
     transform: scale(1);
     transition: transform 0.3s ease, z-index 0s;
@@ -2793,12 +2735,10 @@ html {
     z-index: 2;
 }
 
-/* Remove hover transform when popup is active */
 body.popup-active .testimonial:hover {
     transform: none;
 }
 
-/* Popup and overlay improvements for all devices */
 .overlay,
 #overlay {
     display: none;
@@ -2832,9 +2772,7 @@ body.popup-active .testimonial:hover {
     z-index: 10000;
 }
 
-/* Fix mobile testimonial card behavior */
 @media screen and (max-width: 576px) {
-    /* Ensure testimonials don't overlap with popup */
     .testimonial {
         transform: none !important;
         transition: none !important;
@@ -2847,7 +2785,6 @@ body.popup-active .testimonial:hover {
         z-index: 1;
     }
     
-    /* Make popup more mobile-friendly */
     .popup {
         padding: 20px;
         width: 95%;
@@ -2868,7 +2805,6 @@ body.popup-active .testimonial:hover {
         margin-bottom: 10px;
     }
     
-    /* Ensure popup is above everything */
     body.popup-active .overlay,
     body.popup-active #overlay {
         z-index: 99999 !important;
