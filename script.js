@@ -185,160 +185,178 @@ document.addEventListener('DOMContentLoaded', () => {
     const page8 = document.querySelector('.page8');
     const page9 = document.querySelector('.page9');
     
-    // First arrow click - show page 2
-    const firstArrow = document.getElementById('first-arrow');
-    if (firstArrow) {
-        firstArrow.addEventListener('click', () => {
-            const page1 = document.querySelector('.page1');
-            const page2 = document.querySelector('.page2');
-            
-            // Hide page 1 with extra mobile-specific styles
-            if (page1) {
-                page1.classList.add('hidden');
-                page1.style.zIndex = '-1';
-                
-                // Complete hiding after animation
-                setTimeout(() => {
+    // --- SCROLL-BASED TRANSITION LOGIC ---
+    let currentPage = 1;
+    let isTransitioning = false;
+
+    function transitionToPage2() {
+        if (isTransitioning || currentPage !== 1) return;
+        isTransitioning = true;
+        // Animate page1 out, page2 in
+        gsap.to('.page1', {
+            y: -100,
+            opacity: 0,
+            duration: 0.4,
+            ease: 'power2.in',
+            onComplete: () => {
+                if (page1) {
                     page1.style.display = 'none';
-                }, 1000);
-            }
-            
-            // Show page 2 after a delay
-            setTimeout(() => {
+                }
                 if (page2) {
                     page2.style.display = 'flex';
                     page2.style.zIndex = '9000';
                     page2.style.visibility = 'visible';
                     page2.style.backgroundColor = 'var(--dark-bg)';
                     page2.classList.remove('hidden');
-                    
-                    // Reset animations for page 2 elements
-                    const page2Text = page2.querySelector('.maintext');
-                    if (page2Text) {
-                        page2Text.style.animation = 'none';
-                        void page2Text.offsetHeight; // Trigger reflow
-                        page2Text.style.animation = 'fadeInUp 1.5s ease forwards';
-                    }
-                    
-                    const page2Arrow = page2.querySelector('.down-arrow');
-                    if (page2Arrow) {
-                        page2Arrow.style.animation = 'none';
-                        void page2Arrow.offsetHeight; // Trigger reflow
-                        page2Arrow.style.animation = 'fadeIn 1.5s ease forwards, bounce 2s infinite 1.5s';
-                    }
+                    gsap.fromTo('.page2', {y: 100, opacity: 0}, {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.7,
+                        ease: 'power2.out',
+                        onComplete: () => {
+                            // Animate text in page2
+                            const page2Text = page2.querySelector('.maintext');
+                            if (page2Text) {
+                                gsap.fromTo(page2Text, {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, ease: 'power2.out'});
+                            }
+                            const page2Arrow = page2.querySelector('.down-arrow');
+                            if (page2Arrow) {
+                                gsap.fromTo(page2Arrow, {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: 'power2.out'});
+                            }
+                            currentPage = 2;
+                            isTransitioning = false;
+                        }
+                    });
                 }
-            }, 800);
+            }
         });
     }
-    
-    const secondArrow = document.getElementById('second-arrow');
-    if (secondArrow) {
-        secondArrow.addEventListener('click', () => {
-            const page2 = document.querySelector('.page2');
-            const header = document.querySelector('header');
-            const hero = document.querySelector('.hero');
-            const page4 = document.querySelector('.page4');
-            const page5 = document.querySelector('.page5');
-            const page6 = document.querySelector('.page6');
-            const page7 = document.querySelector('.page7');
-            const page8 = document.querySelector('.page8');
-            const page9 = document.querySelector('.page9');
-            
-            if (page2) {
-                page2.classList.add('hidden');
-                page2.style.display = 'none';
-                page2.style.zIndex = '-1';
-            }
-            
-            setTimeout(() => {
-                document.body.classList.remove('initial-pages');
-                document.body.style.overflow = 'visible';
-                document.body.style.position = 'static'; // Reset position
-                
-                // Show header and hero
+
+    function transitionToPage3() {
+        if (isTransitioning || currentPage !== 2) return;
+        isTransitioning = true;
+        // Animate page2 out
+        gsap.to('.page2', {
+            y: -100,
+            opacity: 0,
+            duration: 0.7,
+            ease: 'power2.in',
+            onComplete: () => {
+                if (page2) {
+                    page2.style.display = 'none';
+                }
+                // Animate header and hero in
                 if (header) {
                     header.classList.remove('hidden');
                     header.style.display = 'block';
                     header.style.visibility = 'visible';
                     header.style.opacity = '1';
-                    header.style.animation = 'fadeInUp 0.5s ease forwards';
+                    gsap.fromTo(header, {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 0.7, ease: 'power2.out'});
                 }
-                
                 if (hero) {
                     hero.classList.remove('hidden');
                     hero.style.display = 'flex';
                     hero.style.visibility = 'visible';
                     hero.style.opacity = '1';
-                    hero.style.animation = 'fadeInUp 0.5s ease forwards';
+                    gsap.fromTo(hero, {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 0.7, delay: 0.1, ease: 'power2.out'});
                 }
-                
-                // Make content sections visible but not shown (for scroll animation)
                 if (page4) {
                     page4.classList.remove('hidden');
                     page4.style.display = 'flex';
                 }
-
                 if (page5) {
                     page5.classList.remove('hidden');
                     page5.style.display = 'flex';
                 }
-
                 if (page6) {
                     page6.classList.remove('hidden');
                     page6.style.display = 'flex';
                 }
-
                 if (page7) {
                     page7.classList.remove('hidden');
                     page7.style.display = 'flex';
                 }
-
                 if (page8) {
                     page8.classList.remove('hidden');
                     page8.style.display = 'flex';
                 }
-                
                 if (page9) {
                     page9.classList.remove('hidden');
                     page9.style.display = 'flex';
                 }
-                
-                
-                // Initialize scroll animations after elements are visible
                 setTimeout(() => {
                     initScrollAnimations();
                 }, 1000);
-                
+                // Animate hero text
                 const badge = document.querySelector('.badge');
                 const h1Spans = document.querySelectorAll('h1 span');
                 const tagline = document.querySelector('.tagline');
                 const button = document.querySelector('.hero .get-in-touch-btn');
-                
                 if (badge) {
-                    badge.style.animation = 'none';
-                    badge.offsetHeight;
-                    badge.style.animation = 'fadeInDown 0.8s ease-out';
+                    gsap.fromTo(badge, {y: -30, opacity: 0}, {y: 0, opacity: 1, duration: 0.6, ease: 'power2.out'});
                 }
-                
                 h1Spans.forEach((span, index) => {
-                    span.style.animation = 'none';
-                    span.offsetHeight;
-                    span.style.animation = `fadeInUp 0.8s ease-out ${0.2 + index * 0.2}s forwards`;
+                    gsap.fromTo(span, {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.6, delay: 0.2 + index * 0.2, ease: 'power2.out'});
                 });
-                
                 if (tagline) {
-                    tagline.style.animation = 'none';
-                    tagline.offsetHeight;
-                    tagline.style.animation = 'fadeInUp 0.8s ease-out 0.6s forwards';
+                    gsap.fromTo(tagline, {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.6, delay: 0.6, ease: 'power2.out'});
                 }
-                
                 if (button) {
-                    button.style.animation = 'none';
-                    button.offsetHeight;
-                    button.style.animation = 'fadeInUp 0.8s ease-out 0.8s forwards';
+                    gsap.fromTo(button, {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.6, delay: 0.8, ease: 'power2.out'});
                 }
-            }, 400);
+                document.body.classList.remove('initial-pages');
+                document.body.style.overflow = 'visible';
+                document.body.style.position = 'static';
+                currentPage = 3;
+                isTransitioning = false;
+            }
         });
+    }
+
+    // Helper to detect scroll direction
+    let lastScrollY = 0;
+    function handleScrollPage1(e) {
+        if (isTransitioning || currentPage !== 1) return;
+        // For mouse wheel
+        if (e.type === 'wheel' && e.deltaY > 30) {
+            transitionToPage2();
+        }
+        // For touch (swipe up)
+        if (e.type === 'touchstart') {
+            lastScrollY = e.touches[0].clientY;
+        }
+        if (e.type === 'touchend') {
+            const endY = e.changedTouches[0].clientY;
+            if (lastScrollY - endY > 40) {
+                transitionToPage2();
+            }
+        }
+    }
+    function handleScrollPage2(e) {
+        if (isTransitioning || currentPage !== 2) return;
+        if (e.type === 'wheel' && e.deltaY > 30) {
+            transitionToPage3();
+        }
+        if (e.type === 'touchstart') {
+            lastScrollY = e.touches[0].clientY;
+        }
+        if (e.type === 'touchend') {
+            const endY = e.changedTouches[0].clientY;
+            if (lastScrollY - endY > 40) {
+                transitionToPage3();
+            }
+        }
+    }
+    // Attach scroll listeners
+    if (page1) {
+        page1.addEventListener('wheel', handleScrollPage1, { passive: false });
+        page1.addEventListener('touchstart', handleScrollPage1, { passive: false });
+        page1.addEventListener('touchend', handleScrollPage1, { passive: false });
+    }
+    if (page2) {
+        page2.addEventListener('wheel', handleScrollPage2, { passive: false });
+        page2.addEventListener('touchstart', handleScrollPage2, { passive: false });
+        page2.addEventListener('touchend', handleScrollPage2, { passive: false });
     }
     
     function initScrollAnimations() {
@@ -634,6 +652,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // --- GSAP Staggered Reveal Animations ---
+    function staggerReveal(sectionSelector, options = {}) {
+        gsap.utils.toArray(sectionSelector).forEach(section => {
+            const items = section.querySelectorAll(options.childSelector || '.animate-on-scroll, .solution-card, .card, .box, .testimonial');
+            if (items.length) {
+                gsap.from(items, {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.96,
+                    duration: 0.7,
+                    stagger: {
+                        each: 0.12,
+                        from: 'start'
+                    },
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    },
+                    ...options.gsap
+                });
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        staggerReveal('.solutions-grid', { childSelector: '.solution-card' });
+        staggerReveal('.why-us .row', { childSelector: '.card' });
+        staggerReveal('.team-container-outer', { childSelector: '.box' });
+        staggerReveal('.testimonial-grid', { childSelector: '.testimonial' });
+    });
 });
 
 function filterTestimonials(category) {
@@ -644,15 +696,14 @@ function filterTestimonials(category) {
     event.target.classList.add('active');
 
     testimonials.forEach(testimonial => {
-if (category === 'all' || testimonial.getAttribute('data-category') === category) {
-testimonial.style.visibility = 'visible';
-testimonial.style.position = 'relative';
-} else {
-testimonial.style.visibility = 'hidden';
-testimonial.style.position = 'absolute';
-}
-});
-
+        if (category === 'all' || testimonial.getAttribute('data-category') === category) {
+            testimonial.style.visibility = 'visible';
+            testimonial.style.position = 'relative';
+        } else {
+            testimonial.style.visibility = 'hidden';
+            testimonial.style.position = 'absolute';
+        }
+    });
 }
 
 function openPopup(logoUrl, title, subtitle, description) {
