@@ -239,8 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to('.page2', {
             y: -100,
             opacity: 0,
-            duration: 0.4,
-            ease: 'power2.in',
+            duration: 0.7,
+            ease: 'power2.out',
             onComplete: () => {
                 if (page2) {
                     page2.style.display = 'none';
