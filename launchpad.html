@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Launchpad30 - Exclusive Offer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -1171,6 +1172,226 @@
                 padding: 40px 20px;
             }
         }
+
+        .email-popup-modal {
+            font-family: "Montserrat";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw; 
+            height: 100vh;
+            background: rgba(10, 20, 30, 0.55);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: background 0.3s;
+            overflow: hidden;
+        }
+        .email-popup-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(0,255,170,0.18) 0%, rgba(0,212,255,0.10) 60%, transparent 100%);
+            filter: blur(40px);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            animation: popupGlowPulse 4s ease-in-out infinite;
+        }
+        @keyframes popupGlowPulse {
+            0%,100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        .email-popup-content {
+            min-width: 500px;
+            max-width: 700px;
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.13);
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            border-radius: 2.5rem;
+            border: 2.5px solid rgba(0,255,170,0.28);
+            box-shadow: 0 20px 60px 0 rgba(0,255,162,0.18), 0 2px 18px rgba(0,0,0,0.32), 0 0 0 3px rgba(0,255,170,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.3s, border 0.3s, padding 0.3s;
+            opacity: 0;
+            transform: scale(0.85) translateY(40px);
+            animation: none;
+        }
+        @media (max-width: 900px) {
+            .email-popup-content {
+                min-width: 95vw;
+                max-width: 98vw;
+                padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+            }
+        }
+        .email-popup-content h2 {
+            margin-top: 1.5rem;
+            /* margin-bottom: 0.7rem; */
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            background: linear-gradient(90deg, #21FF94 0%, #00B8B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .email-popup-content h5 {
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .email-popup-content form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .email-popup-content input[type="email"] {
+            width: 70%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            padding: 1rem;
+            border-radius: 18px;
+            border: 2px solid #00d4ff;
+            background: rgba(255,255,255,0.22);
+            color: #222;
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 18px 0 rgba(0,255,170,0.08);
+            font-family: inherit;
+            font-weight: 500;
+        }
+        .email-popup-content input[type="email"]:focus {
+            border: 2.5px solid #21FF94;
+            box-shadow: 0 0 0 3px #21FF9477;
+            background: rgba(255,255,255,0.32);
+        }
+        .email-popup-submit {
+            align-self: center;
+            font-family: "Montserrat";
+            background: linear-gradient(90deg, #21FF94 0%, #00B8B8 100%);
+            color: #000;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 30px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 20px 0 rgba(0,255,162,0.13);
+            letter-spacing: 1.2px;
+            position: relative;
+            overflow: hidden;
+        }
+        .email-popup-submit:hover {
+            background: linear-gradient(90deg, #00B8B8 0%, #21FF94 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 28px 0 #00ffd055;
+        }
+        .email-popup-submit:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px 0 rgba(0,255,162,0.1);
+        }
+        /* Ripple effect */
+        .email-popup-submit::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        .email-popup-submit:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        /* Loading state */
+        .email-popup-submit.loading {
+            pointer-events: none;
+            opacity: 0.8;
+            background: linear-gradient(90deg, #00B8B8 0%, #21FF94 100%);
+        }
+        .email-popup-submit.loading::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        .email-popup-close {
+            position: absolute;
+            top: 18px;
+            right: 28px;
+            background: none;
+            border: none;
+            color: #00d4ff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.2s, transform 0.2s;
+            line-height: 1;
+            font-weight: 900;
+            text-shadow: 0 2px 12px #00ffd055;
+        }
+        .email-popup-close:hover {
+            color: #21FF94;
+            transform: scale(1.25) rotate(10deg);
+        }
+        body.email-popup-blur > *:not(.email-popup-modal) {
+            filter: blur(8px) grayscale(0.2) brightness(0.8) !important;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
     </style>
 </head>
 
@@ -1305,7 +1526,7 @@
                         <div class="feature-icon">📣</div>
                     </div>
                     <h3 class="feature-title">Build Your Presence</h3>
-                    <p class="feature-description">Boost your brand’s reach with a strong presence everywhere.</p>
+                    <p class="feature-description">Boost your brand's reach with a strong presence everywhere.</p>
                 </div>
             </div>
         </div>
@@ -1394,6 +1615,24 @@
         </div>
     </section>
 
+    <!-- Email Popup Modal -->
+    <div id="email-popup" class="email-popup-modal" style="display:none;">
+      <div class="email-popup-glow"></div>
+      <div class="email-popup-content">
+        <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
+        <h2><span class="email-popup-gradient-text">Enter Your Email</span></h2>
+        <h5><span class="email-popup-gradient-text">Don't Worry, We will not spam you</span></h5>
+        <form id="email-form" onsubmit="handleFormSubmit(event)" action="https://formsubmit.co/upsight.business@gmail.com" method="POST">
+          <input type="hidden" name="plan" id="selected-plan" value="">
+          <input type="email" name="email" id="user-email" placeholder="Your Email Address" required/>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New Package Interest">
+          <button type="submit" class="email-popup-submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
         // Initialize feature cards animations with intersection observer
         document.addEventListener('DOMContentLoaded', () => {            
@@ -1591,38 +1830,130 @@
 
         // CTA button interactions with modern feedback
         function handleCTA(packageType) {
-            // Add your CTA logic here
-            console.log(`Selected package: ${packageType}`);
+            window.selectedPackageType = packageType;
+            document.getElementById('selected-plan').value = packageType;
+            openEmailPopup();
+        }
+        function openEmailPopup() {
+            const popup = document.getElementById('email-popup');
+            const content = popup.querySelector('.email-popup-content');
+            popup.style.display = 'flex';
+            document.body.classList.add('email-popup-blur');
+            document.getElementById('user-email').value = '';
+            gsap.set(content, {scale: 0.8, opacity: 0, y: 80, filter: 'blur(12px)'});
+            gsap.to(content, {
+                scale: 1.04,
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                duration: 0.55,
+                ease: 'power3.out',
+                onComplete: () => {
+                    gsap.to(content, {scale: 1, duration: 0.18, ease: 'power1.inOut'});
+                }
+            });
+        }
+        function closeEmailPopup() {
+            const popup = document.getElementById('email-popup');
+            const content = popup.querySelector('.email-popup-content');
+            gsap.to(content, {
+                scale: 0.8,
+                opacity: 0,
+                y: 80,
+                filter: 'blur(12px)',
+                duration: 0.2,
+                ease: 'power2.in',
+                onComplete: () => {
+                    popup.style.display = 'none';
+                    document.body.classList.remove('email-popup-blur');
+                    // Reset the form and button state
+                    const form = document.getElementById('email-form');
+                    if (form) {
+                        form.reset();
+                        const submitButton = form.querySelector('.email-popup-submit');
+                        if (submitButton) {
+                            submitButton.classList.remove('loading');
+                            submitButton.textContent = 'Submit';
+                            submitButton.style.background = '';
+                        }
+                        // Also reset the border color of the email input
+                        const emailInput = form.querySelector('#user-email');
+                        if (emailInput) {
+                            emailInput.style.border = '';
+                        }
+                    }
+                }
+            });
+        }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var email = document.getElementById('user-email').value;
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('user-email').style.border = '2px solid #ff4d4d';
+                document.getElementById('user-email').focus();
+                return;
+            }
+            
+            // Add loading state to button
+            const submitButton = event.target.querySelector('.email-popup-submit');
+            submitButton.classList.add('loading');
+            submitButton.textContent = 'Sending...';
+            
+            var plan = document.getElementById('selected-plan').value;
+            
+            // Create FormData object
+            const formData = new FormData();
+            formData.append('email', email);
+            formData.append('plan', plan);
+            formData.append('_captcha', 'false');
+            formData.append('_subject', `New ${plan} Package Interest`);
 
-            // Create a modern notification instead of using alert
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.bottom = '30px';
-            notification.style.right = '30px';
-            notification.style.backgroundColor = 'rgba(0, 212, 255, 0.9)';
-            notification.style.color = '#000';
-            notification.style.padding = '20px';
-            notification.style.borderRadius = '10px';
-            notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-            notification.style.zIndex = '1000';
-            notification.style.transform = 'translateX(100%)';
-            notification.style.transition = 'transform 0.3s ease-out';
-            notification.innerHTML = `<strong>Thank you!</strong><br>We've received your interest in the ${packageType} package! We'll be in touch within 24 hours.`;
-
-            document.body.appendChild(notification);
-
-            // Show the notification
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-
-            // Remove the notification after 5 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
+            fetch('https://formsubmit.co/upsight.business@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Add success animation
+                    submitButton.style.background = 'linear-gradient(90deg, #00B8B8 0%, #21FF94 100%)';
+                    submitButton.textContent = 'Success!';
+                    
+                    setTimeout(() => {
+                        closeEmailPopup();
+                        // Show thank you notification
+                        const notification = document.createElement('div');
+                        notification.style.position = 'fixed';
+                        notification.style.bottom = '30px';
+                        notification.style.right = '30px';
+                        notification.style.backgroundColor = 'rgba(0, 212, 255, 0.9)';
+                        notification.style.color = '#000';
+                        notification.style.padding = '20px';
+                        notification.style.borderRadius = '10px';
+                        notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+                        notification.style.zIndex = '3000';
+                        notification.style.transform = 'translateX(100%)';
+                        notification.style.transition = 'transform 0.3s ease-out';
+                        notification.innerHTML = `<strong>Thank you!</strong><br>We've received your interest in the ${plan} package! We'll be in touch within 24 hours.`;
+                        document.body.appendChild(notification);
+                        setTimeout(() => {
+                            notification.style.transform = 'translateX(0)';
+                        }, 100);
+                        setTimeout(() => {
+                            notification.style.transform = 'translateX(100%)';
+                            setTimeout(() => {
+                                document.body.removeChild(notification);
+                            }, 300);
+                        }, 3000);
+                    }, 500);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Reset button state on error
+                submitButton.classList.remove('loading');
+                submitButton.textContent = 'Submit';
+                submitButton.style.background = 'linear-gradient(90deg, #21FF94 0%, #00B8B8 100%)';
+            });
         }
 
         // Add parallax effect to floating elements with improved performance
@@ -1675,6 +2006,14 @@
                 plansSection.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // For demo: open popup on any click on the body (except when popup is open)
+        document.body.addEventListener('click', function(e) {
+            const popup = document.getElementById('email-popup');
+            if (popup.style.display !== 'flex' && !e.target.closest('.email-popup-content')) {
+                openEmailPopup();
+            }
+        });
     </script>
 </body>
 
