@@ -2169,50 +2169,82 @@
             popup.style.display = 'flex';
             document.body.classList.add('email-popup-blur');
             document.getElementById('user-email').value = '';
-            gsap.set(content, { scale: 0.8, opacity: 0, y: 80, filter: 'blur(12px)' });
-            gsap.to(content, {
-                scale: 1.04,
-                opacity: 1,
-                y: 0,
-                filter: 'blur(0px)',
-                duration: 0.55,
-                ease: 'power3.out',
-                onComplete: () => {
-                    gsap.to(content, { scale: 1, duration: 0.18, ease: 'power1.inOut' });
-                }
-            });
+
+            if (window.innerWidth <= 768) {
+                // No GSAP animation on mobile/small screens
+                content.style.opacity = '1';
+                content.style.transform = 'scale(1) translateY(0)';
+                content.style.filter = 'blur(0px)';
+            } else {
+                // GSAP animation for desktop
+                gsap.set(content, { scale: 0.8, opacity: 0, y: 80, filter: 'blur(12px)' });
+                gsap.to(content, {
+                    scale: 1.04,
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.55,
+                    ease: 'power3.out',
+                    onComplete: () => {
+                        gsap.to(content, { scale: 1, duration: 0.18, ease: 'power1.inOut' });
+                    }
+                });
+            }
         }
         function closeEmailPopup() {
             const popup = document.getElementById('email-popup');
             const content = popup.querySelector('.email-popup-content');
-            gsap.to(content, {
-                scale: 0.8,
-                opacity: 0,
-                y: 80,
-                filter: 'blur(12px)',
-                duration: 0.2,
-                ease: 'power2.in',
-                onComplete: () => {
-                    popup.style.display = 'none';
-                    document.body.classList.remove('email-popup-blur');
-                    // Reset the form and button state
-                    const form = document.getElementById('email-form');
-                    if (form) {
-                        form.reset();
-                        const submitButton = form.querySelector('.email-popup-submit');
-                        if (submitButton) {
-                            submitButton.classList.remove('loading');
-                            submitButton.textContent = 'Submit';
-                            submitButton.style.background = '';
-                        }
-                        // Also reset the border color of the email input
-                        const emailInput = form.querySelector('#user-email');
-                        if (emailInput) {
-                            emailInput.style.border = '';
-                        }
+            if (window.innerWidth <= 768) {
+                // No GSAP animation on mobile/small screens
+                popup.style.display = 'none';
+                document.body.classList.remove('email-popup-blur');
+                // Reset the form and button state
+                const form = document.getElementById('email-form');
+                if (form) {
+                    form.reset();
+                    const submitButton = form.querySelector('.email-popup-submit');
+                    if (submitButton) {
+                        submitButton.classList.remove('loading');
+                        submitButton.textContent = 'Submit';
+                        submitButton.style.background = '';
+                    }
+                    // Also reset the border color of the email input
+                    const emailInput = form.querySelector('#user-email');
+                    if (emailInput) {
+                        emailInput.style.border = '';
                     }
                 }
-            });
+            } else {
+                // GSAP animation for desktop
+                gsap.to(content, {
+                    scale: 0.8,
+                    opacity: 0,
+                    y: 80,
+                    filter: 'blur(12px)',
+                    duration: 0.2,
+                    ease: 'power2.in',
+                    onComplete: () => {
+                        popup.style.display = 'none';
+                        document.body.classList.remove('email-popup-blur');
+                        // Reset the form and button state
+                        const form = document.getElementById('email-form');
+                        if (form) {
+                            form.reset();
+                            const submitButton = form.querySelector('.email-popup-submit');
+                            if (submitButton) {
+                                submitButton.classList.remove('loading');
+                                submitButton.textContent = 'Submit';
+                                submitButton.style.background = '';
+                            }
+                            // Also reset the border color of the email input
+                            const emailInput = form.querySelector('#user-email');
+                            if (emailInput) {
+                                emailInput.style.border = '';
+                            }
+                        }
+                    }
+                });
+            }
         }
         function handleFormSubmit(event) {
             event.preventDefault();
