@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Launchpad30 - Exclusive Offer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none !important; /* Hide default cursor */
+            cursor: none !important;
+            /* Hide default cursor */
+            font-family: 'Poppins', sans-serif !important;
         }
 
         .cursor {
@@ -30,6 +34,7 @@
             /* Ensure cursor is not transparent */
             will-change: transform;
         }
+
         /* Scrolling text animation */
         .scrolling-text-container {
             position: fixed;
@@ -499,17 +504,19 @@
             height: 4px;
             background: linear-gradient(90deg, #00d4ff, transparent);
             border-radius: 2px;
-        }        
+        }
+
         .pricing-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap:70px;
+            gap: 70px;
             margin-top: 40px;
             perspective: 1000px;
             max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
-        }        
+        }
+
         .pricing-card {
             background: linear-gradient(145deg, #30815077 20%, #191a1a 50%);
             border: 2px solid #ffffff;
@@ -911,7 +918,9 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: left 0.8s ease;
-        }        .feature-card:hover {
+        }
+
+        .feature-card:hover {
             transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
             border-color: rgba(50, 201, 111, 0.5);
             box-shadow:
@@ -923,7 +932,9 @@
 
         .feature-card:hover::before {
             left: 100%;
-        }        .feature-icon-wrapper {
+        }
+
+        .feature-icon-wrapper {
             position: relative;
             width: 100px;
             height: 100px;
@@ -934,7 +945,7 @@
             transform-style: preserve-3d;
             transform: perspective(800px);
         }
-        
+
         .feature-icon-wrapper::before,
         .feature-icon-wrapper::after {
             content: '';
@@ -947,7 +958,7 @@
             border: 1px solid rgba(50, 201, 111, 0.3);
             animation: ringPulse 4s linear infinite;
         }
-        
+
         .feature-icon-wrapper::after {
             top: -10px;
             left: -10px;
@@ -956,28 +967,35 @@
             border: 1px solid rgba(0, 212, 255, 0.3);
             animation: ringPulse 4s linear infinite 2s;
         }
-          @keyframes ringPulse {
+
+        @keyframes ringPulse {
             0% {
                 transform: scale(0.9) rotateX(10deg) rotateY(0deg);
                 opacity: 0.2;
             }
+
             25% {
                 transform: scale(0.95) rotateX(5deg) rotateY(90deg);
                 opacity: 0.3;
             }
+
             50% {
                 transform: scale(1.1) rotateX(0deg) rotateY(180deg);
                 opacity: 0.5;
             }
+
             75% {
                 transform: scale(1.05) rotateX(-5deg) rotateY(270deg);
                 opacity: 0.3;
             }
+
             100% {
                 transform: scale(0.9) rotateX(10deg) rotateY(360deg);
                 opacity: 0.2;
             }
-        }.feature-icon-bg {
+        }
+
+        .feature-icon-bg {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -1000,7 +1018,9 @@
                 transform: scale(1.05) translateZ(-10px);
                 opacity: 1;
             }
-        }        .feature-icon {
+        }
+
+        .feature-icon {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -1042,12 +1062,16 @@
 
         .feature-card:hover .feature-description {
             color: rgba(255, 255, 255, 0.9);
-        }        /* Hover effect for icon */
+        }
+
+        /* Hover effect for icon */
         .feature-card:hover .feature-icon {
             animation: revolveIcon 5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
             filter: brightness(1.5);
             text-shadow: 0 0 10px rgba(50, 201, 111, 0.8);
-        }@keyframes bounce {
+        }
+
+        @keyframes bounce {
 
             0%,
             100% {
@@ -1057,40 +1081,51 @@
             50% {
                 transform: translate(-50%, -60%) scale(1.2);
             }
-        }        @keyframes revolveIcon {
+        }
+
+        @keyframes revolveIcon {
             0% {
                 transform: translate(-50%, -50%) rotateY(0deg) rotateX(20deg) rotateZ(0deg);
             }
+
             25% {
                 transform: translate(-50%, -50%) rotateY(90deg) rotateX(15deg) rotateZ(90deg);
             }
+
             50% {
                 transform: translate(-50%, -50%) rotateY(180deg) rotateX(-15deg) rotateZ(180deg);
             }
+
             75% {
                 transform: translate(-50%, -50%) rotateY(270deg) rotateX(15deg) rotateZ(270deg);
             }
+
             100% {
                 transform: translate(-50%, -50%) rotateY(360deg) rotateX(20deg) rotateZ(360deg);
             }
         }
-          @keyframes revolveIconBg {
+
+        @keyframes revolveIconBg {
             0% {
                 transform: translateZ(-5px) rotateX(0deg) rotateY(0deg);
                 background: linear-gradient(135deg, rgba(50, 201, 111, 0.2), rgba(0, 212, 255, 0.2));
             }
+
             25% {
                 transform: translateZ(-5px) rotateX(10deg) rotateY(90deg);
                 background: linear-gradient(225deg, rgba(50, 201, 111, 0.25), rgba(0, 212, 255, 0.25));
             }
+
             50% {
                 transform: translateZ(-5px) rotateX(0deg) rotateY(180deg);
                 background: linear-gradient(315deg, rgba(50, 201, 111, 0.3), rgba(0, 212, 255, 0.3));
             }
+
             75% {
                 transform: translateZ(-5px) rotateX(-10deg) rotateY(270deg);
                 background: linear-gradient(45deg, rgba(50, 201, 111, 0.25), rgba(0, 212, 255, 0.25));
             }
+
             100% {
                 transform: translateZ(-5px) rotateX(0deg) rotateY(360deg);
                 background: linear-gradient(135deg, rgba(50, 201, 111, 0.2), rgba(0, 212, 255, 0.2));
@@ -1176,8 +1211,11 @@
         .email-popup-modal {
             font-family: "Montserrat";
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            width: 100vw; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
             height: 100vh;
             background: rgba(10, 20, 30, 0.55);
             z-index: 2000;
@@ -1189,32 +1227,44 @@
             transition: background 0.3s;
             overflow: hidden;
         }
+
         .email-popup-glow {
             position: absolute;
-            top: 50%; left: 50%;
-            width: 420px; height: 420px;
-            background: radial-gradient(circle, rgba(0,255,170,0.18) 0%, rgba(0,212,255,0.10) 60%, transparent 100%);
+            top: 50%;
+            left: 50%;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(0, 255, 170, 0.18) 0%, rgba(0, 212, 255, 0.10) 60%, transparent 100%);
             filter: blur(40px);
             transform: translate(-50%, -50%);
             z-index: 1;
             pointer-events: none;
             animation: popupGlowPulse 4s ease-in-out infinite;
         }
+
         @keyframes popupGlowPulse {
-            0%,100% { opacity: 0.7; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
+
         .email-popup-content {
             min-width: 500px;
             max-width: 700px;
             width: 100%;
             padding: 1rem;
-            background: rgba(255,255,255,0.13);
+            background: rgba(255, 255, 255, 0.13);
             -webkit-backdrop-filter: blur(22px);
             backdrop-filter: blur(22px);
             border-radius: 2.5rem;
-            border: 2.5px solid rgba(0,255,170,0.28);
-            box-shadow: 0 20px 60px 0 rgba(0,255,162,0.18), 0 2px 18px rgba(0,0,0,0.32), 0 0 0 3px rgba(0,255,170,0.18);
+            border: 2.5px solid rgba(0, 255, 170, 0.28);
+            box-shadow: 0 20px 60px 0 rgba(0, 255, 162, 0.18), 0 2px 18px rgba(0, 0, 0, 0.32), 0 0 0 3px rgba(0, 255, 170, 0.18);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1223,6 +1273,7 @@
             transform: scale(0.85) translateY(40px);
             animation: none;
         }
+
         @media (max-width: 900px) {
             .email-popup-content {
                 min-width: 95vw;
@@ -1230,6 +1281,7 @@
                 padding: 1.2rem 0.3rem 1.2rem 0.3rem;
             }
         }
+
         .email-popup-content h2 {
             margin-top: 1.5rem;
             /* margin-bottom: 0.7rem; */
@@ -1242,6 +1294,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .email-popup-content h5 {
             margin-bottom: 2.5rem;
             font-size: 1rem;
@@ -1249,6 +1302,7 @@
             letter-spacing: 0.5px;
             text-align: center;
         }
+
         .email-popup-content form {
             display: flex;
             flex-direction: column;
@@ -1256,6 +1310,7 @@
             justify-content: center;
             width: 100%;
         }
+
         .email-popup-content input[type="email"] {
             width: 70%;
             max-width: 350px;
@@ -1265,21 +1320,23 @@
             padding: 1rem;
             border-radius: 18px;
             border: 2px solid #00d4ff;
-            background: rgba(255,255,255,0.22);
+            background: rgba(255, 255, 255, 0.22);
             color: #222;
             font-size: 1.25rem;
             margin-bottom: 3rem;
             outline: none;
             transition: border 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 18px 0 rgba(0,255,170,0.08);
+            box-shadow: 0 2px 18px 0 rgba(0, 255, 170, 0.08);
             font-family: inherit;
             font-weight: 500;
         }
+
         .email-popup-content input[type="email"]:focus {
             border: 2.5px solid #21FF94;
             box-shadow: 0 0 0 3px #21FF9477;
-            background: rgba(255,255,255,0.32);
+            background: rgba(255, 255, 255, 0.32);
         }
+
         .email-popup-submit {
             align-self: center;
             font-family: "Montserrat";
@@ -1293,20 +1350,23 @@
             cursor: pointer;
             margin-bottom: 0.5rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 20px 0 rgba(0,255,162,0.13);
+            box-shadow: 0 2px 20px 0 rgba(0, 255, 162, 0.13);
             letter-spacing: 1.2px;
             position: relative;
             overflow: hidden;
         }
+
         .email-popup-submit:hover {
             background: linear-gradient(90deg, #00B8B8 0%, #21FF94 100%);
             transform: scale(1.05);
             box-shadow: 0 4px 28px 0 #00ffd055;
         }
+
         .email-popup-submit:active {
             transform: scale(0.95);
-            box-shadow: 0 2px 10px 0 rgba(0,255,162,0.1);
+            box-shadow: 0 2px 10px 0 rgba(0, 255, 162, 0.1);
         }
+
         /* Ripple effect */
         .email-popup-submit::after {
             content: '';
@@ -1321,29 +1381,35 @@
             transform: scale(1, 1) translate(-50%);
             transform-origin: 50% 50%;
         }
+
         .email-popup-submit:focus:not(:active)::after {
             animation: ripple 1s ease-out;
         }
+
         @keyframes ripple {
             0% {
                 transform: scale(0, 0);
                 opacity: 0.5;
             }
+
             20% {
                 transform: scale(25, 25);
                 opacity: 0.3;
             }
+
             100% {
                 opacity: 0;
                 transform: scale(40, 40);
             }
         }
+
         /* Loading state */
         .email-popup-submit.loading {
             pointer-events: none;
             opacity: 0.8;
             background: linear-gradient(90deg, #00B8B8 0%, #21FF94 100%);
         }
+
         .email-popup-submit.loading::before {
             content: '';
             position: absolute;
@@ -1351,22 +1417,23 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent);
             animation: loading 1.5s infinite;
         }
+
         @keyframes loading {
             0% {
                 left: -100%;
             }
+
             100% {
                 left: 100%;
             }
         }
+
         .email-popup-close {
             position: absolute;
             top: 18px;
@@ -1382,15 +1449,215 @@
             font-weight: 900;
             text-shadow: 0 2px 12px #00ffd055;
         }
+
         .email-popup-close:hover {
             color: #21FF94;
             transform: scale(1.25) rotate(10deg);
         }
-        body.email-popup-blur > *:not(.email-popup-modal) {
+
+        body.email-popup-blur>*:not(.email-popup-modal) {
             filter: blur(8px) grayscale(0.2) brightness(0.8) !important;
             pointer-events: none;
             user-select: none;
             -webkit-user-select: none;
+        }
+
+        @media (max-width: 600px) {
+            .email-popup-content {
+                min-width: 80vw;
+                max-width: 88vw;
+                padding: 0.5rem 0.2rem 1rem 0.2rem;
+                border-radius: 1rem;
+            }
+
+            .email-popup-content h2 {
+                font-size: 1.4rem;
+                margin-top: 0.7rem;
+            }
+
+            .email-popup-content h5 {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .email-popup-content input[type="email"] {
+                width: 80vw;
+                max-width: 86vw;
+                font-size: 0.95rem;
+                padding: 0.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .email-popup-submit {
+                font-size: 0.95rem;
+                padding: 0.7rem 1.1rem;
+                border-radius: 18px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+
+            .section-title {
+                font-size: 1.5rem !important;
+            }
+
+            .card-title,
+            .feature-title {
+                font-size: 1.1rem !important;
+            }
+
+            .price {
+                font-size: 1.5rem !important;
+            }
+
+            .price-label {
+                font-size: 0.9rem !important;
+            }
+
+            .cta-button {
+                font-size: 1rem !important;
+                padding: 0.8rem 1.2rem !important;
+            }
+
+            .content-card,
+            .feature-card,
+            .pricing-card {
+                padding: 1rem 0.5rem !important;
+            }
+
+            .feature-icon-wrapper {
+                width: 50px !important;
+                height: 50px !important;
+            }
+
+            .pricing-card:hover,
+            .pricing-card:active {
+                transform: none !important;
+                border-color: #ffffff !important;
+                filter: none !important;
+            }
+
+            .cta-button:hover,
+            .cta-button:active {
+                background: linear-gradient(145deg, #32c96f, #18aab5);
+            }
+        }
+
+        .new-footer {
+            margin-top: 2.5rem;
+            padding: 0;
+        }
+
+        .footer {
+            position: relative;
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 2rem;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .footer-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 100, 100, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #777;
+            font-size: 0.875rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .social-icons {
+                margin-top: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -1543,7 +1810,7 @@
 
         <div class="pricing-section">
             <h2>Our Plans</h2>
-        
+
             <div class="pricing-cards">
                 <div class="pricing-card">
                     <div class="price">Basic</div>
@@ -1556,7 +1823,7 @@
                     </ul>
                     <button class="cta-button" onclick="handleCTA('standard')">Get Started</button>
                 </div>
-        
+
                 <div class="pricing-card">
                     <div class="popular-tag">Popular</div>
                     <div class="price">Premium</div>
@@ -1615,27 +1882,89 @@
         </div>
     </section>
 
+    <!-- Footer section -->
+    <section class="new-footer">
+        <footer class="footer">
+            <div class="footer-overlay"></div>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="media/upsight-logo.png" alt="UpSight Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/upsightmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0,0,256,256">
+                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                            stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                            font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                            <g transform="scale(10.66667,10.66667)">
+                                <path
+                                    d="M8,3c-2.757,0 -5,2.243 -5,5v8c0,2.757 2.243,5 5,5h8c2.757,0 5,-2.243 5,-5v-8c0,-2.757 -2.243,-5 -5,-5zM8,5h8c1.654,0 3,1.346 3,3v8c0,1.654 -1.346,3 -3,3h-8c-1.654,0 -3,-1.346 -3,-3v-8c0,-1.654 1.346,-3 3,-3zM17,6c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM12,7c-2.757,0 -5,2.243 -5,5c0,2.757 2.243,5 5,5c2.757,0 5,-2.243 5,-5c0,-2.757 -2.243,-5 -5,-5zM12,9c1.654,0 3,1.346 3,3c0,1.654 -1.346,3 -3,3c-1.654,0 -3,-1.346 -3,-3c0,-1.654 1.346,-3 3,-3z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg></a>
+                    <a href="https://www.linkedin.com/company/upsight-media" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0,0,256,256">
+                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                                stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                <g transform="scale(8.53333,8.53333)">
+                                    <path
+                                        d="M24,4h-18c-1.105,0 -2,0.895 -2,2v18c0,1.105 0.895,2 2,2h18c1.105,0 2,-0.895 2,-2v-18c0,-1.105 -0.895,-2 -2,-2zM10.954,22h-2.95v-9.492h2.95zM9.449,11.151c-0.951,0 -1.72,-0.771 -1.72,-1.72c0,-0.949 0.77,-1.719 1.72,-1.719c0.948,0 1.719,0.771 1.719,1.719c0,0.949 -0.771,1.72 -1.719,1.72zM22.004,22h-2.948v-4.616c0,-1.101 -0.02,-2.517 -1.533,-2.517c-1.535,0 -1.771,1.199 -1.771,2.437v4.696h-2.948v-9.492h2.83v1.297h0.04c0.394,-0.746 1.356,-1.533 2.791,-1.533c2.987,0 3.539,1.966 3.539,4.522z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                    <a href="upsight.business@gmail.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" height="35" viewBox="0,0,256,256">
+                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+                                stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                <g transform="scale(5.12,5.12)">
+                                    <path
+                                        d="M43.75391,6.40234c-1.2177,-0.05335 -2.45911,0.31055 -3.48242,1.06641l-2.74609,2.02734l-12.52539,9.25977l-12.4082,-9.17187c-0.17292,-0.16897 -0.4012,-0.26957 -0.64258,-0.2832h0.25l-2.46484,-1.82422c-1.02397,-0.75773 -2.26723,-1.12367 -3.48633,-1.07031c-1.2191,0.05336 -2.4131,0.52522 -3.33984,1.43945c-1.17726,1.16068 -1.9082,2.78413 -1.9082,4.56445v3.43359c-0.01457,0.09777 -0.01457,0.19715 0,0.29492v23.36133c0,1.92119 1.57881,3.5 3.5,3.5h7.5c0.55226,-0.00006 0.99994,-0.44774 1,-1v-16.62695l11.40625,8.43164c0.353,0.26043 0.8345,0.26043 1.1875,0l11.40625,-8.43164v16.62695c0.00006,0.55226 0.44774,0.99994 1,1h7.5c1.92119,0 3.5,-1.57881 3.5,-3.5v-23.38086c0.01129,-0.08622 0.01129,-0.17355 0,-0.25977v-3.44922c0,-1.75846 -0.70954,-3.37437 -1.87109,-4.53711c-0.03357,-0.03357 -0.04482,-0.04287 -0.03125,-0.0293c-0.00194,-0.00196 -0.0039,-0.00391 -0.00586,-0.00586c-0.92656,-0.91221 -2.12019,-1.3822 -3.33789,-1.43555zM43.64453,8.40039c0.7563,0.02965 1.48952,0.3165 2.04492,0.86328c0.01891,0.01867 0.03272,0.03277 0.02344,0.02344c0.79645,0.79726 1.28711,1.9015 1.28711,3.12305v3.08594l-8,5.91211v-10.4082c0.00042,-0.0339 -0.00088,-0.0678 -0.00391,-0.10156l2.46289,-1.82031c0.00065,0 0.0013,0 0.00195,0c0.64864,-0.47915 1.42729,-0.70739 2.18359,-0.67773zM6.35742,8.40625c0.75715,-0.02964 1.53847,0.19746 2.1875,0.67773l2.45898,1.81836c-0.00289,0.03247 -0.0042,0.06506 -0.00391,0.09766v10.4082l-8,-5.91211v-3.08594c0,-1.23567 0.50176,-2.3413 1.3125,-3.14062c0.55526,-0.54776 1.28777,-0.83364 2.04492,-0.86328zM37,12.37109v10.51563l-12,8.86914l-12,-8.86914v-10.51367l11.40625,8.43164c0.353,0.26043 0.8345,0.26043 1.1875,0zM3,17.98242l8,5.91406v17.10352h-6.5c-0.84081,0 -1.5,-0.65919 -1.5,-1.5zM47,17.98242v21.51758c0,0.84081 -0.65919,1.5 -1.5,1.5h-6.5v-17.10352z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="mailto:upsight.business@gmail.com">Contact</a>
+            </div>
+            <div class="footer-bottom">© 2025 UpSight. All rights reserved.</div>
+        </footer>
+    </section>
+
     <!-- Email Popup Modal -->
     <div id="email-popup" class="email-popup-modal" style="display:none;">
-      <div class="email-popup-glow"></div>
-      <div class="email-popup-content">
-        <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
-        <h2><span class="email-popup-gradient-text">Enter Your Email</span></h2>
-        <h5><span class="email-popup-gradient-text">Don't Worry, We will not spam you</span></h5>
-        <form id="email-form" onsubmit="handleFormSubmit(event)" action="https://formsubmit.co/upsight.business@gmail.com" method="POST">
-          <input type="hidden" name="plan" id="selected-plan" value="">
-          <input type="email" name="email" id="user-email" placeholder="Your Email Address" required/>
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="New Package Interest">
-          <button type="submit" class="email-popup-submit">Submit</button>
-        </form>
-      </div>
+        <div class="email-popup-glow"></div>
+        <div class="email-popup-content">
+            <button class="email-popup-close" onclick="closeEmailPopup()">&times;</button>
+            <h2><span class="email-popup-gradient-text">Enter Your Email</span></h2>
+            <h5><span class="email-popup-gradient-text">Don't Worry, We will not spam you</span></h5>
+            <form id="email-form" onsubmit="handleFormSubmit(event)"
+                action="https://formsubmit.co/upsight.business@gmail.com" method="POST">
+                <input type="hidden" name="plan" id="selected-plan" value="">
+                <input type="email" name="email" id="user-email" placeholder="Your Email Address" required />
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Package Interest">
+                <button type="submit" class="email-popup-submit">Submit</button>
+            </form>
+        </div>
+
+        
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
         // Initialize feature cards animations with intersection observer
-        document.addEventListener('DOMContentLoaded', () => {            
+        document.addEventListener('DOMContentLoaded', () => {
             const featureCards = document.querySelectorAll('.feature-card');
             const existingCursors = document.querySelectorAll('.cursor');
             if (existingCursors.length > 1) {
@@ -1729,21 +2058,21 @@
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
                         featureObserver.unobserve(entry.target);
-                        
+
                         // Add 3D mouse movement effect for the icons
                         const iconWrapper = entry.target.querySelector('.feature-icon-wrapper');
                         const icon = entry.target.querySelector('.feature-icon');
-                        
+
                         if (iconWrapper && icon) {
                             entry.target.addEventListener('mousemove', (e) => {
                                 const rect = iconWrapper.getBoundingClientRect();
                                 const x = e.clientX - rect.left - rect.width / 2;
                                 const y = e.clientY - rect.top - rect.height / 2;
-                                
+
                                 // Subtle tilt effect based on mouse position
                                 icon.style.transform = `translate(-50%, -50%) rotateY(${x * 0.05}deg) rotateX(${-y * 0.05}deg)`;
                             });
-                            
+
                             entry.target.addEventListener('mouseleave', () => {
                                 icon.style.transform = '';
                             });
@@ -1840,7 +2169,7 @@
             popup.style.display = 'flex';
             document.body.classList.add('email-popup-blur');
             document.getElementById('user-email').value = '';
-            gsap.set(content, {scale: 0.8, opacity: 0, y: 80, filter: 'blur(12px)'});
+            gsap.set(content, { scale: 0.8, opacity: 0, y: 80, filter: 'blur(12px)' });
             gsap.to(content, {
                 scale: 1.04,
                 opacity: 1,
@@ -1849,7 +2178,7 @@
                 duration: 0.55,
                 ease: 'power3.out',
                 onComplete: () => {
-                    gsap.to(content, {scale: 1, duration: 0.18, ease: 'power1.inOut'});
+                    gsap.to(content, { scale: 1, duration: 0.18, ease: 'power1.inOut' });
                 }
             });
         }
@@ -1893,14 +2222,14 @@
                 document.getElementById('user-email').focus();
                 return;
             }
-            
+
             // Add loading state to button
             const submitButton = event.target.querySelector('.email-popup-submit');
             submitButton.classList.add('loading');
             submitButton.textContent = 'Sending...';
-            
+
             var plan = document.getElementById('selected-plan').value;
-            
+
             // Create FormData object
             const formData = new FormData();
             formData.append('email', email);
@@ -1912,48 +2241,48 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => {
-                if (response.ok) {
-                    // Add success animation
-                    submitButton.style.background = 'linear-gradient(90deg, #00B8B8 0%, #21FF94 100%)';
-                    submitButton.textContent = 'Success!';
-                    
-                    setTimeout(() => {
-                        closeEmailPopup();
-                        // Show thank you notification
-                        const notification = document.createElement('div');
-                        notification.style.position = 'fixed';
-                        notification.style.bottom = '30px';
-                        notification.style.right = '30px';
-                        notification.style.backgroundColor = 'rgba(0, 212, 255, 0.9)';
-                        notification.style.color = '#000';
-                        notification.style.padding = '20px';
-                        notification.style.borderRadius = '10px';
-                        notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
-                        notification.style.zIndex = '3000';
-                        notification.style.transform = 'translateX(100%)';
-                        notification.style.transition = 'transform 0.3s ease-out';
-                        notification.innerHTML = `<strong>Thank you!</strong><br>We've received your interest in the ${plan} package! We'll be in touch within 24 hours.`;
-                        document.body.appendChild(notification);
+                .then(response => {
+                    if (response.ok) {
+                        // Add success animation
+                        submitButton.style.background = 'linear-gradient(90deg, #00B8B8 0%, #21FF94 100%)';
+                        submitButton.textContent = 'Success!';
+
                         setTimeout(() => {
-                            notification.style.transform = 'translateX(0)';
-                        }, 100);
-                        setTimeout(() => {
+                            closeEmailPopup();
+                            // Show thank you notification
+                            const notification = document.createElement('div');
+                            notification.style.position = 'fixed';
+                            notification.style.bottom = '30px';
+                            notification.style.right = '30px';
+                            notification.style.backgroundColor = 'rgba(0, 212, 255, 0.9)';
+                            notification.style.color = '#000';
+                            notification.style.padding = '20px';
+                            notification.style.borderRadius = '10px';
+                            notification.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+                            notification.style.zIndex = '3000';
                             notification.style.transform = 'translateX(100%)';
+                            notification.style.transition = 'transform 0.3s ease-out';
+                            notification.innerHTML = `<strong>Thank you!</strong><br>We've received your interest in the ${plan} package! We'll be in touch within 24 hours.`;
+                            document.body.appendChild(notification);
                             setTimeout(() => {
-                                document.body.removeChild(notification);
-                            }, 300);
-                        }, 3000);
-                    }, 500);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Reset button state on error
-                submitButton.classList.remove('loading');
-                submitButton.textContent = 'Submit';
-                submitButton.style.background = 'linear-gradient(90deg, #21FF94 0%, #00B8B8 100%)';
-            });
+                                notification.style.transform = 'translateX(0)';
+                            }, 100);
+                            setTimeout(() => {
+                                notification.style.transform = 'translateX(100%)';
+                                setTimeout(() => {
+                                    document.body.removeChild(notification);
+                                }, 300);
+                            }, 3000);
+                        }, 500);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Reset button state on error
+                    submitButton.classList.remove('loading');
+                    submitButton.textContent = 'Submit';
+                    submitButton.style.background = 'linear-gradient(90deg, #21FF94 0%, #00B8B8 100%)';
+                });
         }
 
         // Add parallax effect to floating elements with improved performance
@@ -2006,14 +2335,6 @@
                 plansSection.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        // For demo: open popup on any click on the body (except when popup is open)
-        document.body.addEventListener('click', function(e) {
-            const popup = document.getElementById('email-popup');
-            if (popup.style.display !== 'flex' && !e.target.closest('.email-popup-content')) {
-                openEmailPopup();
-            }
-        });
     </script>
 </body>
 
