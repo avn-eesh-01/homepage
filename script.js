@@ -309,6 +309,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.position = 'static';
                 currentPage = 3;
                 isTransitioning = false;
+                // Scroll to the hero section after transition
+                if (hero) {
+                    window.scrollTo({
+                        top: hero.offsetTop - 60, // Adjust offset for header if needed
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     }
